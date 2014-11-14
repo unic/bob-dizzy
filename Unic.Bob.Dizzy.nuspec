@@ -7,7 +7,7 @@
       <owners>Unic AG</owners>
       <iconUrl>https://www.unic.com/img/unic-logo.png</iconUrl>
       <requireLicenseAcceptance>false</requireLicenseAcceptance>
-      <description></description>
+      <description>Dizzy creates and restores Frontend packages.</description>
     </metadata>
     <files>
         <file src="src\**" />
