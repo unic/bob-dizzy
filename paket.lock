@@ -1,1 +1,4 @@
-
+NUGET
+  remote: https://nuget.org/api/v2
+  specs:
+    NuGet.CommandLine (2.8.3)
