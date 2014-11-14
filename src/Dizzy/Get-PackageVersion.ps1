@@ -23,7 +23,7 @@ function Get-PackageVersion
     else {
         $localBuildBranch = $buildBranch -replace "origin/", ""
         $featureBranch = $localBuildBranch -replace "feature/", ""
-        $version + "-" + $featureBranch + $paddedBuildNumber
+        $version + "-" + $featureBranch+ "-" + $paddedBuildNumber
     }
   }
 }

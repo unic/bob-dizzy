@@ -30,7 +30,7 @@ Describe "Get-PackageVersion" {
     $version = Get-PackageVersion -Branch "build-feature" -MetaDataJsonPath $metadataJson
 
     It "Should be a release prerelase. " {
-      $version | Should Be "0.1-POSTWEPP-1908_Fancybox_improvements-3000"
+      $version | Should Be "0.1-POSTWEPP-1908_Fancybox_improvements-0030"
     }
   }
 }
