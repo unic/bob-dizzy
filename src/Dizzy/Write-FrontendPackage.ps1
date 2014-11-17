@@ -14,7 +14,9 @@ function Write-FrontendPackage
   Process
   {
     $nuget = ResolvePath -PackageId "NuGet.CommandLine" -RelativePath "tools\NuGet.exe"
-    $nuspec = Resolve-Path "$PSScriptRoot\..\NuGet\Frontend.nuspec"
+    $templateNuspec = Resolve-Path "$PSScriptRoot\..\NuGet\Frontend.nuspec.template"
+    $nuspec = "${env:TEMP}\Frontend.nuspec"
+    cp $templateNuspec $nuspec -Force
 
     & $nuget pack $nuspec -p "ID=$Id" -version $Version -BasePath $Path -o $OutputLocation
   }
