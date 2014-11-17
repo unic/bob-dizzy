@@ -19,5 +19,8 @@ function Write-FrontendPackage
     cp $templateNuspec $nuspec -Force
 
     & $nuget pack $nuspec -p "ID=$Id" -version $Version -BasePath $Path -o $OutputLocation
+    if($LASTEXITCODE -ne 0) {
+        Write-Error "NuGet package generation failed"
+    }
   }
 }
