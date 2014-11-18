@@ -1,3 +1,5 @@
+$ErrorActionPreference = "Stop"
+
 $PSScriptRoot = Split-Path  $script:MyInvocation.MyCommand.Path
 
 function ResolvePath() {
@@ -15,3 +17,7 @@ function ResolvePath() {
 
 Get-ChildItem -Path $PSScriptRoot\*.ps1 -Exclude *.tests.ps1 | Foreach-Object{ . $_.FullName }
 Export-ModuleMember -Function * -Alias *
+
+Import-Module (ResolvePath "Unic.Bob.Config" "tools\BobConfig")
+[System.Reflection.Assembly]::LoadFrom((ResolvePath "Nuget.Core" "lib\net40-client\NuGet.Core.dll"))
+#[System.Reflection.Assembly]::LoadFrom((ResolvePath "Nuget.CommandLine" "tools\nuget.exe"))
