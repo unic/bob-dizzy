@@ -5,7 +5,7 @@ $paketFolder = "$PSScriptRoot\.paket"
 $paketBoot = "$paketFolder\paket.bootstrapper.exe"
 
 & $paketBoot
-& "$paketFolder\paket.exe" restore "0.12.2"
+& "$paketFolder\paket.exe" restore
 
 if($LASTEXITCODE -ne 0) {
     if($env:TEAMCITY_VERSION) {
