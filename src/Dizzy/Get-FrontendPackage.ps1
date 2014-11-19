@@ -33,6 +33,9 @@ function Get-FrontendPackage
                 "releases/*" {
                     "*-release????"
                 }
+                "hotfix/*" {
+                    "*-release????"
+                }
                 default {
                     "*-develop????"
                 }

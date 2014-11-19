@@ -4,6 +4,7 @@ source https://nuget.org/api/v2
 nuget NuGet.CommandLine
 nuget NuGet.Core
 nuget Pester
+nuget libGit2Sharp
 
 source https://teamcity.unic.com/httpAuth/app/nuget/v1/FeedService.svc/ username: "%PAKET_USER%" password: "%PAKET_PASSWORD%"
 
