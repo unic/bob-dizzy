@@ -9,3 +9,4 @@ nuget libGit2Sharp
 source https://teamcity.unic.com/httpAuth/app/nuget/v1/FeedService.svc/ username: "%PAKET_USER%" password: "%PAKET_PASSWORD%"
 
 nuget Unic.Bob.Config prerelease
+nuget Unic.Bob.Keith
