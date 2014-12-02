@@ -5,13 +5,14 @@ function Get-PackageVersion
       [Parameter(Mandatory=$true)]
       [string] $Branch,
       [Parameter(Mandatory=$true)]
-      [string] $MetaDataJsonPath
+      [string] $MetaDataJsonPath,
+      [Parameter(Mandatory=$true)]
+      [string] $MajorMinorPatch
   )
   Process
   {
     $metadata = Get-Content -Raw $MetaDataJsonPath | ConvertFrom-Json
-    # TODO get from git
-    $version = "0.1"
+    $version = $MajorMinorPatch
     $buildBranch = $metadata.'build-branch'
     $paddedBuildNumber = "{0:D4}" -f [int]$metadata.'build-version'
     $Branch = $Branch -replace "refs/heads/", ""
