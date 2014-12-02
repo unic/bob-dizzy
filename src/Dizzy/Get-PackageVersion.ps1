@@ -14,6 +14,7 @@ function Get-PackageVersion
     $version = "0.1"
     $buildBranch = $metadata.'build-branch'
     $paddedBuildNumber = "{0:D4}" -f [int]$metadata.'build-version'
+    $Branch = $Branch -replace "refs/heads/", ""
     if($Branch -eq "build-develop") {
         $version + "-develop" + $paddedBuildNumber
     }
