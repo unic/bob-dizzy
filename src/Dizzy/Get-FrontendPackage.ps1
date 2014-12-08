@@ -29,6 +29,7 @@ function Get-FrontendPackage
             "*-$Prerelease-????"
         }
         else {
+            $Branch = $Branch -replace "refs/heads/", ""
             switch -wildcard ($branch) {
                 "release/*" {
                     "*-release????"
