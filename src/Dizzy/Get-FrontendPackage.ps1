@@ -44,6 +44,6 @@ function Get-FrontendPackage
         }
     }
 
-    $packages | sort {$_.Version} | where {$_.Version -like $pattern} |  select -Last 1
+    $packages | where {$_.Version -like $pattern} |  select -Last 1
   }
 }
