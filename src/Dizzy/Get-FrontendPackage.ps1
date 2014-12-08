@@ -30,7 +30,7 @@ function Get-FrontendPackage
         }
         else {
             switch -wildcard ($branch) {
-                "releases/*" {
+                "release/*" {
                     "*-release????"
                 }
                 "hotfix/*" {
