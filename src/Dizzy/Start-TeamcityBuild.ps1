@@ -11,7 +11,7 @@ function Start-TeamcityBuild
         [Parameter(Mandatory=$true)]
         [string] $Password,
         [Parameter(Mandatory=$true)]
-        [string] $Branch,
+        [string] $Branch
     )
     Process
     {
