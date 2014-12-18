@@ -1,0 +1,44 @@
+.book .book-summary ul.summary li > a:hover {
+    color: #A4C400 ;
+}
+
+.book .book-summary ul.summary li.active > a {
+    color: #28aaff;
+}
+
+.book .book-summary ul.summary li > a {
+    color: #333;
+    display: block;
+    font-size: 1.167em;
+    margin-bottom: 0.4em;
+    text-decoration: none;
+    font-family: Georgia;
+}
+
+.book .book-summary {
+    background-color: white;
+}
+
+.book .book-body .page-wrapper .page-inner section.normal h1, .book .book-body .page-wrapper .page-inner section.normal h2, .book .book-body .page-wrapper .page-inner section.normal h3, .book .book-body .page-wrapper .page-inner section.normal h4, .book .book-body .page-wrapper .page-inner section.normal h5, .book .book-body .page-wrapper .page-inner section.normal h6  {
+    font-family: Georgia,serif;
+    font-weight: normal;
+    border-bottom: none;
+}
+
+body .book .book-body{
+    font-family: Arial,sans-serif;
+    line-height: 1.38;
+}
+
+.unic-logo {
+    width: 90px;
+    margin-right: 30px;
+    margin-left: 45px;
+    float: right;
+
+}
+
+
+.unic-logo img {
+    width: 100%;
+}
