@@ -1,0 +1,13 @@
+* [dizzy - API](api/README.md)
+    * [Get-FrontendPackage](api/Get-FrontendPackage.md)
+    * [Get-PackageVersion](api/Get-PackageVersion.md)
+    * [GetDirecectoryContainingSubdir](api/GetDirecectoryContainingSubdir.md)
+    * [Install-Frontend](api/Install-Frontend.md)
+    * [Install-FrontendPackage](api/Install-FrontendPackage.md)
+    * [ResolvePath](api/ResolvePath.md)
+    * [Set-TeamcityVariable](api/Set-TeamcityVariable.md)
+    * [Set-TeamcityVariablesFromMetadata](api/Set-TeamcityVariablesFromMetadata.md)
+    * [Start-TeamcityBuild](api/Start-TeamcityBuild.md)
+    * [Write-FrontendPackage](api/Write-FrontendPackage.md)
+
+

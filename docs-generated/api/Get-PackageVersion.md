@@ -5,7 +5,7 @@
 
 ## Syntax
 
-    Get-PackageVersion [-Branch] <string> [-MetaDataJsonPath] <string> [<CommonParameters>]
+    Get-PackageVersion [-Branch] <string> [-MetaDataJsonPath] <string> [-MajorMinorPatch] <string> [<CommonParameters>]
 
 
 
@@ -17,6 +17,19 @@
 Required?  true
 
 Position? 0
+
+Default value? 
+
+Accept pipeline input? false
+
+Accept wildchard characters? 
+    
+    
+    -MajorMinorPatch <string>
+
+Required?  true
+
+Position? 2
 
 Default value? 
 
