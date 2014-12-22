@@ -1,5 +1,10 @@
 # dizzy - API
 
+##  GetDirecectoryContainingSubdir
+    GetDirecectoryContainingSubdir [[-Parent] <Object>] [[-SubDir] <Object>]
+
+
+ [Read more](GetDirecectoryContainingSubdir.md)
 ##  Get-FrontendPackage
     Get-FrontendPackage [-Branch] <string> [-PackageId] <string> [-Source] <string> [[-Prerelease] <string>] [<CommonParameters>]
 
@@ -10,11 +15,6 @@
 
 
  [Read more](Get-PackageVersion.md)
-##  GetDirecectoryContainingSubdir
-    GetDirecectoryContainingSubdir [[-Parent] <Object>] [[-SubDir] <Object>]
-
-
- [Read more](GetDirecectoryContainingSubdir.md)
 ##  Install-Frontend
     Install-Frontend [[-Name] <string>] [[-ProjectPath] <string>] [[-Branch] <string>] [<CommonParameters>]
 
