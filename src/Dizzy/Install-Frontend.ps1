@@ -4,7 +4,8 @@ function Install-Frontend
     Param(
         [string] $Name,
         [string] $ProjectPath,
-        [string] $Branch
+        [string] $Branch,
+        [string] $Version
     )
     Process
     {
@@ -13,8 +14,6 @@ function Install-Frontend
             Write-Error "GlobalWebPath or WebsiteCodeName or WebFolderName are not configured."
         }
         $Location = "$($config.GlobalWebPath)\$($config.WebsiteCodeName)\$($config.WebFolderName)"
-
-
 
         if(-not $Location) {
             Write-Error "No Location could be found to extract."
@@ -33,10 +32,20 @@ function Install-Frontend
                 Write-Error "HEAD is detached. Please ensure you are on a valid branch or provide the 'Branch' parameter."
             }
         }
+        if(-not $Version) {
+            [GitVersion.Logger]::WriteInfo = {}
+            [GitVersion.Logger]::WriteWarning = {}
+            [GitVersion.Logger]::WriteError = {}
+            $repo = New-Object LibGit2Sharp.Repository $repoDir
+            $gitVersionConfig = New-Object GitVersion.Config
+            $ctx = New-Object GitVersion.GitVersionContext $repo, $gitVersionConfig
+            $versionFinder = New-Object GitVersion.GitVersionFinder
+            $Version = $versionFinder.FindVersion($ctx).ToString("j")
+        }
 
         $packageId = $config.FrontendPackage
         if(-not $packageId) {
-            Write-Error "Fontend package id could not be found. Make sure Bob.config contains the FrontendPackage key."
+            Write-Error "Frontend package id could not be found. Make sure Bob.config contains the FrontendPackage key."
         }
 
         $source = $config.NuGetFeed
@@ -44,7 +53,7 @@ function Install-Frontend
             Write-Error "Source for Frontend package could not be found. Make sure Bob.config contains the NuGetFeed key."
         }
 
-        $package = Get-FrontendPackage -Branch $Branch -PackageId $PackageId -Source $Source -Prerelease $Name
+        $package = Get-FrontendPackage -Branch $Branch -PackageId $PackageId -Source $Source -Prerelease $Name -Version $Version
         if(-not $package) {
             "Frontend package form branch $Branch with the ID $PackageId in $Source could not be found."
         }

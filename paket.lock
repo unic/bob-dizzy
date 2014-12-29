@@ -1,7 +1,8 @@
 NUGET
   remote: https://nuget.org/api/v2
   specs:
-    LibGit2Sharp (0.20.0.0)
+    GitVersion (2.0.0.0)
+    LibGit2Sharp (0.20.1.0)
     Microsoft.Web.Xdt (2.1.1)
     NuGet.CommandLine (2.8.3)
     Nuget.Core (2.8.3)
@@ -9,5 +10,5 @@ NUGET
     Pester (3.2.0)
   remote: https://teamcity.unic.com/httpAuth/app/nuget/v1/FeedService.svc
   specs:
-    Unic.Bob.Config (0.2.0-unstable0008)
-    Unic.Bob.Keith (0.3.0-unstable0002)
+    Unic.Bob.Config (0.2.0-unstable0012)
+    Unic.Bob.Keith (0.3.0-unstable0013)
