@@ -46,7 +46,7 @@ function Get-BackendBranch
 
         $url = "$StashUrl/rest/api/1.0/projects/$Project/repos/$Repo/branches?limit=1000"
         $branches =
-            Invoke-WebRequest $url -Headers @{Authorization=("Basic {0}" -f $base64AuthInfo)} |
+            Invoke-WebRequest $url -Headers @{Authorization=("Basic {0}" -f $base64AuthInfo)} -UseBasicParsing |
                 ConvertFrom-Json
 
         if($branches.isLastPage -ne "True") {
