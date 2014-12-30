@@ -1,12 +1,14 @@
 # dizzy - API
 
-##  GetDirecectoryContainingSubdir
-    GetDirecectoryContainingSubdir [[-Parent] <Object>] [[-SubDir] <Object>]
+##  Get-BackendBranch
+Gets a backend branch based on a frontend branch by querying Stash.    
+    
+    Get-BackendBranch [-FrontendBranch] <String> [-StashUrl] <String> [-Project] <String> [-Repo] <String> [-UserName] <String> [-Password] <SecureString> [<CommonParameters>]
 
 
- [Read more](GetDirecectoryContainingSubdir.md)
+ [Read more](Get-BackendBranch.md)
 ##  Get-FrontendPackage
-    Get-FrontendPackage [-Branch] <string> [-PackageId] <string> [-Source] <string> [[-Prerelease] <string>] [<CommonParameters>]
+    Get-FrontendPackage [-Branch] <string> [-PackageId] <string> [-Source] <string> [[-Prerelease] <string>] [[-Version] <string>] [<CommonParameters>]
 
 
  [Read more](Get-FrontendPackage.md)
@@ -15,8 +17,13 @@
 
 
  [Read more](Get-PackageVersion.md)
+##  GetDirecectoryContainingSubdir
+    GetDirecectoryContainingSubdir [[-Parent] <Object>] [[-SubDir] <Object>]
+
+
+ [Read more](GetDirecectoryContainingSubdir.md)
 ##  Install-Frontend
-    Install-Frontend [[-Name] <string>] [[-ProjectPath] <string>] [[-Branch] <string>] [<CommonParameters>]
+    Install-Frontend [[-Name] <string>] [[-ProjectPath] <string>] [[-Branch] <string>] [[-Version] <string>] [<CommonParameters>]
 
 
  [Read more](Install-Frontend.md)

@@ -5,7 +5,7 @@
 
 ## Syntax
 
-    Get-FrontendPackage [-Branch] <string> [-PackageId] <string> [-Source] <string> [[-Prerelease] <string>] [<CommonParameters>]
+    Get-FrontendPackage [-Branch] <string> [-PackageId] <string> [-Source] <string> [[-Prerelease] <string>] [[-Version] <string>] [<CommonParameters>]
 
 
 
@@ -56,6 +56,19 @@ Accept wildchard characters?
 Required?  true
 
 Position? 2
+
+Default value? 
+
+Accept pipeline input? false
+
+Accept wildchard characters? 
+    
+    
+    -Version <string>
+
+Required?  false
+
+Position? 4
 
 Default value? 
 

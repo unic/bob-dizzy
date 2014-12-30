@@ -5,7 +5,7 @@
 
 ## Syntax
 
-    Install-Frontend [[-Name] <string>] [[-ProjectPath] <string>] [[-Branch] <string>] [<CommonParameters>]
+    Install-Frontend [[-Name] <string>] [[-ProjectPath] <string>] [[-Branch] <string>] [[-Version] <string>] [<CommonParameters>]
 
 
 
@@ -43,6 +43,19 @@ Accept wildchard characters?
 Required?  false
 
 Position? 1
+
+Default value? 
+
+Accept pipeline input? false
+
+Accept wildchard characters? 
+    
+    
+    -Version <string>
+
+Required?  false
+
+Position? 3
 
 Default value? 
 

@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=11; IE=10; IE=9; IE=8; IE=7; IE=EDGE" />
-        <title>Start-TeamcityBuild | Dizzy</title>
+        <title>Get-BackendBranch | Dizzy</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 1.3.4">
@@ -18,10 +18,10 @@
         
     
     
-    <link rel="next" href="../api/Write-FrontendPackage.html" />
+    <link rel="next" href="../api/Get-FrontendPackage.html" />
     
     
-    <link rel="prev" href="../api/Set-TeamcityVariablesFromMetadata.html" />
+    <link rel="prev" href="../api/README.html" />
     
 
         
@@ -37,7 +37,7 @@
 
 
         
-    <div class="book" data-level="2.10" data-basepath=".." data-revision="1419950544056">
+    <div class="book" data-level="2.1" data-basepath=".." data-revision="1419950544056">
     
 
 <div class="book-summary">
@@ -102,7 +102,7 @@
                 
     
         
-        <li class="chapter " data-level="2.1" data-path="api/Get-BackendBranch.html">
+        <li class="chapter active" data-level="2.1" data-path="api/Get-BackendBranch.html">
             
                 
                     <a href="../api/Get-BackendBranch.html">
@@ -246,7 +246,7 @@
         </li>
     
         
-        <li class="chapter active" data-level="2.10" data-path="api/Start-TeamcityBuild.html">
+        <li class="chapter " data-level="2.10" data-path="api/Start-TeamcityBuild.html">
             
                 
                     <a href="../api/Start-TeamcityBuild.html">
@@ -353,44 +353,62 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_13">
+                    <section class="normal" id="section-gitbook_5">
                     
-                        <h1 id="start-teamcitybuild">Start-TeamcityBuild</h1>
+                        <h1 id="get-backendbranch">Get-BackendBranch</h1>
+<p>Gets a backend branch based on a frontend branch by querying Stash.</p>
 <h2 id="syntax">Syntax</h2>
-<pre><code>Start-TeamcityBuild [-BuildId] &lt;string&gt; [-Url] &lt;string&gt; [-User] &lt;string&gt; [-Password] &lt;string&gt; [-Branch] &lt;string&gt; [&lt;CommonParameters&gt;]
-</code></pre><h2 id="parameters">Parameters</h2>
-<pre><code>-Branch &lt;string&gt;
-</code></pre><p>Required?  true</p>
-<p>Position? 4</p>
-<p>Default value? </p>
-<p>Accept pipeline input? false</p>
-<p>Accept wildchard characters? </p>
-<pre><code>-BuildId &lt;string&gt;
-</code></pre><p>Required?  true</p>
-<p>Position? 0</p>
-<p>Default value? </p>
-<p>Accept pipeline input? false</p>
-<p>Accept wildchard characters? </p>
-<pre><code>-Password &lt;string&gt;
-</code></pre><p>Required?  true</p>
-<p>Position? 3</p>
-<p>Default value? </p>
-<p>Accept pipeline input? false</p>
-<p>Accept wildchard characters? </p>
-<pre><code>-Url &lt;string&gt;
-</code></pre><p>Required?  true</p>
+<pre><code>Get-BackendBranch [-FrontendBranch] &lt;String&gt; [-StashUrl] &lt;String&gt; [-Project] &lt;String&gt; [-Repo] &lt;String&gt; [-UserName] &lt;String&gt; [-Password] &lt;SecureString&gt; [&lt;CommonParameters&gt;]
+</code></pre><h2 id="description">Description</h2>
+<p>Get-BackendBranch queries the API of Atlassion Stash to find a matching branch.
+This is used to make sure release/1.0 matches release/1.0.0 and to ensure that a coresponding branch really exists.</p>
+<h2 id="parameters">Parameters</h2>
+<pre><code>-FrontendBranch &lt;String&gt;
+</code></pre><p>The branch to use as base.</p>
+<p>Required?  true</p>
 <p>Position? 1</p>
 <p>Default value? </p>
 <p>Accept pipeline input? false</p>
-<p>Accept wildchard characters? </p>
-<pre><code>-User &lt;string&gt;
-</code></pre><p>Required?  true</p>
+<p>Accept wildchard characters? false</p>
+<pre><code>-StashUrl &lt;String&gt;
+</code></pre><p>The base url to Stash e.g <a href="https://git.unic.com" target="_blank">https://git.unic.com</a></p>
+<p>Required?  true</p>
 <p>Position? 2</p>
 <p>Default value? </p>
 <p>Accept pipeline input? false</p>
-<p>Accept wildchard characters? </p>
+<p>Accept wildchard characters? false</p>
+<pre><code>-Project &lt;String&gt;
+</code></pre><p>The key of the project in Stash.</p>
+<p>Required?  true</p>
+<p>Position? 3</p>
+<p>Default value? </p>
+<p>Accept pipeline input? false</p>
+<p>Accept wildchard characters? false</p>
+<pre><code>-Repo &lt;String&gt;
+</code></pre><p>The key of the repository in stash. E.g. sitecore-website</p>
+<p>Required?  true</p>
+<p>Position? 4</p>
+<p>Default value? </p>
+<p>Accept pipeline input? false</p>
+<p>Accept wildchard characters? false</p>
+<pre><code>-UserName &lt;String&gt;
+</code></pre><p>The username to connect to Stash.</p>
+<p>Required?  true</p>
+<p>Position? 5</p>
+<p>Default value? </p>
+<p>Accept pipeline input? false</p>
+<p>Accept wildchard characters? false</p>
+<pre><code>-Password &lt;SecureString&gt;
+</code></pre><p>The password to connect to Stash</p>
+<p>Required?  true</p>
+<p>Position? 6</p>
+<p>Default value? </p>
+<p>Accept pipeline input? false</p>
+<p>Accept wildchard characters? false</p>
 <h2 id="examples">Examples</h2>
-
+<h3 id="---------------------------example-1---------------------------">-------------------------- EXAMPLE 1 --------------------------</h3>
+<pre><code>Get-BackendBranch -FrontendBranch &quot;release/1.7&quot; -StashUrl https://git.unic.com -Project JURA -Repo sitecore-website -UserName yannis.guedel -Password (ConvertTo-SecureString verySecure -AsPlainText -Force)
+</code></pre>
                     
                     </section>
                 
@@ -400,10 +418,10 @@
         </div>
 
         
-        <a href="../api/Set-TeamcityVariablesFromMetadata.html" class="navigation navigation-prev " aria-label="Previous page: Set-TeamcityVariablesFromMetadata"><i class="fa fa-angle-left"></i></a>
+        <a href="../api/README.html" class="navigation navigation-prev " aria-label="Previous page: dizzy - API"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../api/Write-FrontendPackage.html" class="navigation navigation-next " aria-label="Next page: Write-FrontendPackage"><i class="fa fa-angle-right"></i></a>
+        <a href="../api/Get-FrontendPackage.html" class="navigation navigation-next " aria-label="Next page: Get-FrontendPackage"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
