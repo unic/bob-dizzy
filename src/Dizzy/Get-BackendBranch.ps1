@@ -1,3 +1,25 @@
+<#
+.SYNOPSIS
+Gets a backend branch based on a frontend branch by querying Stash.
+.DESCRIPTION
+Get-BackendBranch queries the API of Atlassion Stash to find a matching branch.
+This is used to make sure release/1.0 matches release/1.0.0 and to ensure that a coresponding branch really exists.
+.PARAMETER FrontendBranch
+The branch to use as base.
+.PARAMETER StashUrl
+The base url to Stash e.g https://git.unic.com
+.PARAMETER Project
+The key of the project in Stash.
+.PARAMETER Repo
+The key of the repository in stash. E.g. sitecore-website
+.PARAMETER UserName
+The username to connect to Stash.
+.PARAMETER Password
+The password to connect to Stash
+
+.EXAMPLE
+Get-BackendBranch -FrontendBranch "release/1.7" -StashUrl https://git.unic.com -Project JURA -Repo sitecore-website -UserName yannis.guedel -Password (ConvertTo-SecureString verySecure -AsPlainText -Force)
+#>
 function Get-BackendBranch
 {
     [CmdletBinding()]
