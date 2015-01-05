@@ -9,7 +9,8 @@ function Set-TeamcityVariablesFromMetadata
   {
     $metadata = Get-Content -Raw $MetaDataJsonPath | ConvertFrom-Json
     Set-TeamcityVariable -Key "id" -Value $metadata.id
-    Set-TeamcityVariable -Key "buildBranch" -Value $metadata."build-branch"
+    $buildBranch = $metadata."build-branch" -replace "origin/", ""
+    Set-TeamcityVariable -Key "buildBranch" -Value $buildBranch
     Set-TeamcityVariable -Key "buildVersion" -Value $metadata."build-version"
   }
 }
