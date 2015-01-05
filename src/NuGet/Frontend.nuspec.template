@@ -10,6 +10,6 @@
       <description>$ID$</description>
     </metadata>
     <files>
-        <file src="assets/**" />
+        ##FILES##
     </files>
   </package>
