@@ -11,4 +11,4 @@ NUGET
   remote: https://teamcity.unic.com/httpAuth/app/nuget/v1/FeedService.svc
   specs:
     Unic.Bob.Config (0.2.0-unstable0012)
-    Unic.Bob.Keith (0.3.0-unstable0013)
+    Unic.Bob.Keith (0.3.0-unstable0022)
