@@ -1,3 +1,30 @@
+<#
+.SYNOPSIS
+Starts a new build of a specific TeamCtiy build configuration with a specific branch.
+
+.DESCRIPTION
+Starts a new build of a specific TeamCtiy build configuration with a specific branch
+on a specific TeamCity server.
+
+.PARAMETER BuildId
+The id of the TeamCity build configuration.
+
+.PARAMETER Url
+The TeamCity base url.
+
+.PARAMETER User
+The user to log in the TeamCity.
+
+.PARAMETER Password
+The password of the $User
+
+.PARAMETER Branch
+The branch to start the build for.
+
+.EXAMPLE
+Start-TeamcityBuild -BuildId Sitecore_Project_Build -Url https://teamcity.unic.com -User myuser -Password mypass -Branch develop
+
+#>
 function Start-TeamcityBuild
 {
     [CmdletBinding()]

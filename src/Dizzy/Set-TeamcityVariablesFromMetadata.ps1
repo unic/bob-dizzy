@@ -1,3 +1,17 @@
+<#
+.SYNOPSIS
+Sets different TeamCity parameters from a specific metadata.json file.
+
+.DESCRIPTION
+Sets the build-id, build-branch and the build-version from a specific metadata.json file
+as TeamCity variable.
+
+.PARAMETER MetaDataJsonPath
+The path to the metadata json.
+
+.EXAMPLE
+Set-TeamcityVariablesFromMetadata -MetaDataJsonPath .\metdata.json
+#>
 function Set-TeamcityVariablesFromMetadata
 {
   [CmdletBinding()]

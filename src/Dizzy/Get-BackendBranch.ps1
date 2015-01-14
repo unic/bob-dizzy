@@ -3,7 +3,7 @@
 Gets a backend branch based on a frontend branch by querying Stash.
 .DESCRIPTION
 Get-BackendBranch queries the API of Atlassion Stash to find a matching branch.
-This is used to make sure release/1.0 matches release/1.0.0 and to ensure that a coresponding branch really exists.
+This is used to make sure release/1.0 matches release/1.0.0 and to ensure that a corresponding branch really exists.
 .PARAMETER FrontendBranch
 The branch to use as base.
 .PARAMETER StashUrl
