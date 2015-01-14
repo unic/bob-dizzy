@@ -10,7 +10,7 @@ as TeamCity variable.
 The path to the metadata json.
 
 .EXAMPLE
-et-TeamcityVariablesFromMetadata -MetaDataJsonPath .\metdata.json
+Set-TeamcityVariablesFromMetadata -MetaDataJsonPath .\metdata.json
 #>
 function Set-TeamcityVariablesFromMetadata
 {
