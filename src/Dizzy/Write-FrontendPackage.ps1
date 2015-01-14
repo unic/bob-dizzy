@@ -1,3 +1,33 @@
+<#
+.SYNOPSIS
+Creates a new Frontend NuGet package.
+
+.DESCRIPTION
+Creates a new Frontend NuGet package with a specific version, id and folders.
+The template for the Frontend package can be found under `..\NuGet\Frontend.nuspec.template`
+
+.PARAMETER Version
+The version the new NuGet package will get.
+
+.PARAMETER Id
+The NuGet package id the newe NuGet package will get.
+.PARAMETER Path
+The base path where of all folders, which must be included.
+For example if D:\temp\scripts and D:\temp\styles should be included, $Path must be D:\temp
+
+.PARAMETER OutputLocation
+The folder where the resulting NuGet package should be placed.s
+
+.PARAMETER Folders
+An array of folders inside the $Path which must be included in the NuGet package.
+
+.EXAMPLE
+Write-FrontendPackage -Version 1.2.3 -Id My.Frontend -Path .\frontend -OutputLocation .\output
+
+.EXAMPLE
+Write-FrontendPackage -Version 1.2.3 -Id My.Frontend -Path .\frontend -OutputLocation .\output -Folders scripts,styles
+
+#>
 function Write-FrontendPackage
 {
   [CmdletBinding()]

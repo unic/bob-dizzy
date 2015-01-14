@@ -1,3 +1,23 @@
+<#
+.SYNOPSIS
+Gets the version to use for building a NuGet package
+.DESCRIPTION
+Get-PackageVersion calculates the version to use,
+when a Frontend NuGet package is built.
+
+.PARAMETER Branch
+The name of the build-* branch from which the NuGet package is built.
+
+.PARAMETER MetaDataJsonPath
+The path to the JSON file containing the metadata of a Frontend build.
+
+.PARAMETER  MajorMinorPatch
+The MajorMinorPatch part of the version.
+
+.EXAMPLE
+Get-PackageVersion build-develop .\metdata.json 1.2.3
+
+#>
 function Get-PackageVersion
 {
   [CmdletBinding()]

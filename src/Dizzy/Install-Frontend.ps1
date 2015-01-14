@@ -1,3 +1,32 @@
+<#
+.SYNOPSIS
+Installs locally the correct Frontend package depending on context.
+
+.DESCRIPTION
+Installs the newest Frontend package for the current branch to the local WebRoot.
+
+.PARAMETER Name
+If the `Name` will be specified, this prerelease will be used instead of the current branch name.
+
+.PARAMETER ProjectPath
+The path to the website project. If it's not specified, the current Visual Studio website project will be used.
+
+.PARAMETER Branch
+The branch name to use to find the correct Frontend pacakge.
+If it's not specified the current branch will be used.
+
+.PARAMETER Version
+The version (Major, Minor, Patch) of the Frontend package to install.
+If it's not specifed, the version will be calculated with GitVersion.
+If no Frontend package with this version exists, the latest release will be used.
+
+.EXAMPLE
+Install-Frontend
+
+.EXAMPLE
+Install-Frontend -Name myFeatureBranch
+
+#>
 function Install-Frontend
 {
     [CmdletBinding()]
