@@ -1,9 +1,9 @@
 <#
 .SYNOPSIS
-Gets a Frontend package for the coresponding backend branch.
+Gets a frontend package for the coresponding backend branch.
 
 .DESCRIPTION
-Gets a Frontend package for the coresponding backend branch
+Gets a frontend package for the coresponding backend branch
 with optionally a specific version and specific prerelase tag.
 For more information about the exact algorithm check the dizzy docs.
 
@@ -11,7 +11,7 @@ For more information about the exact algorithm check the dizzy docs.
 The name of the backend branch.
 
 .PARAMETER PackageId
-The NuGet id of the Frontend package to download.
+The NuGet id of the frontend package to download.
 
 .PARAMETER Source
 The NuGet feed url to use to search the package.

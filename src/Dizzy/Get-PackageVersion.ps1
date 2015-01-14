@@ -3,13 +3,13 @@
 Gets the version to use for building a NuGet package
 .DESCRIPTION
 Get-PackageVersion calculates the version to use,
-when a Frontend NuGet package is built.
+when a frontend NuGet package is built.
 
 .PARAMETER Branch
 The name of the build-* branch from which the NuGet package is built.
 
 .PARAMETER MetaDataJsonPath
-The path to the JSON file containing the metadata of a Frontend build.
+The path to the JSON file containing the metadata of a frontend build.
 
 .PARAMETER  MajorMinorPatch
 The MajorMinorPatch part of the version.

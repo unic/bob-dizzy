@@ -14,7 +14,7 @@ Then install the **Unic.Bob.Dizzy** package in your Website project:
 
     PM>Install-Package Unic.Bob.Dizzy
 
-After Dizzy is installed you can simply execute `Install-Frontend` to install the newest version of the Frontend in the Web-Root
+After Dizzy is installed you can simply execute `Install-Frontend` to install the newest version of the frontend in the Web-Root
 
     PM>Install-Frontend
 
@@ -41,7 +41,7 @@ Edit with: [https://www.draw.io/](https://www.draw.io/)
 
 Each build of the frontend must be pushed back to a build-\* branch. On Teamcity there is a build configuration *Frontend* with a build trigger for the build-\* branches.
 
-The *Frontend* build configuration creates a NuGet package containing the assets. If the build was pushed to build-develop or build-release the *Build* build configuration will be triggered. The *Build* configuration creates a \*.Website NuGet package which contains out code and the Frontend assets.
+The *Frontend* build configuration creates a NuGet package containing the assets. If the build was pushed to build-develop or build-release the *Build* build configuration will be triggered. The *Build* configuration creates a \*.Website NuGet package which contains out code and the frontend assets.
 
 ## Versioning
 

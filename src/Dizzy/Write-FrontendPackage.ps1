@@ -1,10 +1,10 @@
 <#
 .SYNOPSIS
-Creates a new Frontend NuGet package.
+Creates a new frontend NuGet package.
 
 .DESCRIPTION
-Creates a new Frontend NuGet package with a specific version, id and folders.
-The template for the Frontend package can be found under `..\NuGet\Frontend.nuspec.template`
+Creates a new frontend NuGet package with a specific version, id and folders.
+The template for the frontend package can be found under `..\NuGet\Frontend.nuspec.template`
 
 .PARAMETER Version
 The version the new NuGet package will get.
