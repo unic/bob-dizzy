@@ -1,9 +1,9 @@
 <#
 .SYNOPSIS
-Gets a frontend package for the coresponding backend branch.
+Gets a frontend package for the corresponding backend branch.
 
 .DESCRIPTION
-Gets a frontend package for the coresponding backend branch
+Gets a frontend package for the corresponding backend branch
 with optionally a specific version and specific prerelase tag.
 For more information about the exact algorithm check the dizzy docs.
 

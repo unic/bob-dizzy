@@ -22,7 +22,7 @@ The password of the $User
 The branch to start the build for.
 
 .EXAMPLE
-Start-TeamcityBuild -BuildId Sitecore_Project_Build -Url https://teamicty.unic.com -User myuser -Password mypass -Branch develop
+Start-TeamcityBuild -BuildId Sitecore_Project_Build -Url https://teamcity.unic.com -User myuser -Password mypass -Branch develop
 
 #>
 function Start-TeamcityBuild

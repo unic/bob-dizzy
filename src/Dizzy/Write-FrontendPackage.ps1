@@ -10,16 +10,16 @@ The template for the frontend package can be found under `..\NuGet\Frontend.nusp
 The version the new NuGet package will get.
 
 .PARAMETER Id
-The NuGet package id the newe NuGet package will get.
+The NuGet package id the new NuGet package will get.
 .PARAMETER Path
-The base path where of all folders, which must be included.
+The base path of all folders to include.
 For example if D:\temp\scripts and D:\temp\styles should be included, $Path must be D:\temp
 
 .PARAMETER OutputLocation
-The folder where the resulting NuGet package should be placed.s
+The folder where the resulting NuGet package should be placed.
 
 .PARAMETER Folders
-An array of folders inside the $Path which must be included in the NuGet package.
+An array of folders inside the $Path to be included in the NuGet package.
 
 .EXAMPLE
 Write-FrontendPackage -Version 1.2.3 -Id My.Frontend -Path .\frontend -OutputLocation .\output

@@ -17,7 +17,7 @@ If it's not specified the current branch will be used.
 
 .PARAMETER Version
 The version (Major, Minor, Patch) of the frontend package to install.
-If it's not specifed, the version will be calculated with GitVersion.
+If it's not specified, the version will be calculated with GitVersion.
 If no frontend package with this version exists, the latest release will be used.
 
 .EXAMPLE
