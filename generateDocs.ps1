@@ -2,7 +2,7 @@
 
 $PSScriptRoot = split-path -parent $MyInvocation.MyCommand.Definition
 
-$module = "dizzy"
+$module = "Dizzy"
 
 Import-Module "$PSScriptRoot\packages\Unic.Bob.Keith\Keith"
 Import-Module "$PSScriptRoot\src\$module" -Force
