@@ -54,8 +54,11 @@ function Install-Frontend
             Write-Error "$website does not contain a git repository."
         }
 
+        $LibGit2Sharp = [AppDomain]::CurrentDomain.GetAssemblies() | ? {$_.Location -eq (ResolvePath "LibGit2Sharp" "lib\net40\LibGit2Sharp.dll")}
+        $Repository = $LibGit2Sharp.GetType("LibGit2Sharp.Repository")
+
         if(-not $branch) {
-            $repo = New-Object LibGit2Sharp.Repository $repoDir
+            $repo = New-Object $Repository $repoDir
             $branch = $repo.Head.Name
             if($branch -eq "(no branch)") {
                 Write-Error "HEAD is detached. Please ensure you are on a valid branch or provide the 'Branch' parameter."
@@ -65,7 +68,8 @@ function Install-Frontend
             [GitVersion.Logger]::WriteInfo = {}
             [GitVersion.Logger]::WriteWarning = {}
             [GitVersion.Logger]::WriteError = {}
-            $repo = New-Object LibGit2Sharp.Repository $repoDir
+            $repo = New-Object $Repository $repoDir
+
             $gitVersionConfig = New-Object GitVersion.Config
             $ctx = New-Object GitVersion.GitVersionContext $repo, $gitVersionConfig
             $versionFinder = New-Object GitVersion.GitVersionFinder
