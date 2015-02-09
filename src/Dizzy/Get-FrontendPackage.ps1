@@ -48,7 +48,7 @@ function Get-FrontendPackage
     Process
     {
         $fs = New-Object NuGet.PhysicalFileSystem $pwd
-        $setting = [NuGet.Settings]::LoadDefaultSettings($fs,  [NullString]::Value, $null);
+        $setting = [NuGet.Settings]::LoadDefaultSettings($fs,  [System.Environment]::GetFolderPath("ApplicationData") + "\NuGet\NuGet.config", $null);
         $sourceProvider = New-Object NuGet.PackageSourceProvider $setting
 
         $credentialProvider = New-Object NuGet.SettingsCredentialProvider -ArgumentList ([NuGet.ICredentialProvider][NuGet.NullCredentialProvider]::Instance), ([NuGet.IPackageSourceProvider]$sourceProvider)

@@ -56,9 +56,9 @@ function Install-Frontend
 
         $LibGit2Sharp = [AppDomain]::CurrentDomain.GetAssemblies() | ? {$_.Location -eq (ResolvePath "LibGit2Sharp" "lib\net40\LibGit2Sharp.dll")}
         $Repository = $LibGit2Sharp.GetType("LibGit2Sharp.Repository")
+        $repo = [System.Activator]::CreateInstance($Repository, $repoDir, $null)
 
         if(-not $branch) {
-            $repo = New-Object $Repository $repoDir
             $branch = $repo.Head.Name
             if($branch -eq "(no branch)") {
                 Write-Error "HEAD is detached. Please ensure you are on a valid branch or provide the 'Branch' parameter."
@@ -68,7 +68,6 @@ function Install-Frontend
             [GitVersion.Logger]::WriteInfo = {}
             [GitVersion.Logger]::WriteWarning = {}
             [GitVersion.Logger]::WriteError = {}
-            $repo = New-Object $Repository $repoDir
 
             $gitVersionConfig = New-Object GitVersion.Config
             $ctx = New-Object GitVersion.GitVersionContext $repo, $gitVersionConfig
