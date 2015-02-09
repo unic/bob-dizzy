@@ -39,7 +39,7 @@ function Get-PackageVersion
     if($Branch -eq "build-develop") {
         $version + "-develop" + $paddedBuildNumber
     }
-    elseif($Branch -eq "build-release")  {
+    elseif($Branch -eq "build-release" -or $Branch -eq "build-master")  {
         $version + "-release" + $paddedBuildNumber
     }
     else {
