@@ -53,7 +53,7 @@ function Install-Frontend
         if(-not $repoDir) {
             Write-Error "$website does not contain a git repository."
         }
-        $LibGit2SharpName = [System.Reflection.AssemblyName]:: GetAssemblyName((ResolvePath "LibGit2Sharp" "lib\net40\LibGit2Sharp.dll")).FullName
+        $LibGit2SharpName = [System.Reflection.AssemblyName]::GetAssemblyName((ResolvePath "LibGit2Sharp" "lib\net40\LibGit2Sharp.dll")).FullName
         $LibGit2Sharp = [AppDomain]::CurrentDomain.GetAssemblies() | ? {$_.FullName -eq $LibGit2SharpName}
         $Repository = $LibGit2Sharp.GetType("LibGit2Sharp.Repository")
         $repo = [System.Activator]::CreateInstance($Repository, $repoDir, $null)
