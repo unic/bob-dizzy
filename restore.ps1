@@ -4,7 +4,7 @@ $PSScriptRoot = Split-Path $Invocation.MyCommand.Path
 $paketFolder = "$PSScriptRoot\.paket"
 $paketBoot = "$paketFolder\paket.bootstrapper.exe"
 
-& $paketBoot "0.12.0"
+& $paketBoot 
 & "$paketFolder\paket.exe" restore
 
 if($LASTEXITCODE -ne 0) {
