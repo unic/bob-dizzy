@@ -38,6 +38,8 @@ function Install-Frontend
     )
     Process
     {
+        Invoke-BobCommand {
+
         $config = Get-ScProjectConfig $ProjectPath
         if(-not $config.GlobalWebPath -and -not $config.WebsiteCodeName -and -not $config.WebFolderName) {
             Write-Error "GlobalWebPath or WebsiteCodeName or WebFolderName are not configured."
@@ -53,10 +55,8 @@ function Install-Frontend
         if(-not $repoDir) {
             Write-Error "$website does not contain a git repository."
         }
-        $LibGit2SharpName = [System.Reflection.AssemblyName]::GetAssemblyName((ResolvePath "LibGit2Sharp" "lib\net40\LibGit2Sharp.dll")).FullName
-        $LibGit2Sharp = [AppDomain]::CurrentDomain.GetAssemblies() | ? {$_.FullName -eq $LibGit2SharpName}
-        $Repository = $LibGit2Sharp.GetType("LibGit2Sharp.Repository")
-        $repo = [System.Activator]::CreateInstance($Repository, $repoDir, $null)
+
+        $repo = New-Object LibGit2Sharp.Repository $repoDir, $null
 
         if(-not $branch) {
             $branch = $repo.Head.Name
@@ -64,6 +64,7 @@ function Install-Frontend
                 Write-Error "HEAD is detached. Please ensure you are on a valid branch or provide the 'Branch' parameter."
             }
         }
+
         if(-not $Version) {
             [GitVersion.Logger]::WriteInfo = {}
             [GitVersion.Logger]::WriteWarning = {}
@@ -87,7 +88,7 @@ function Install-Frontend
 
         $package = Get-FrontendPackage -Branch $Branch -PackageId $PackageId -Source $Source -Prerelease $Name -Version $Version
         if(-not $package) {
-            "Frontend package form branch $Branch with the ID $PackageId in $Source could not be found."
+            Write-Error "Frontend package form branch $Branch with the ID $PackageId in $Source could not be found."
         }
 
         if(-not (Test-Path $Location )) {
@@ -100,9 +101,10 @@ function Install-Frontend
             rm $assetsPath -Recurse
         }
 
-        Install-FrontendPackage -Package $package -Location $location | Out-Null
+        Install-FrontendPackage -Package $package -Location $location| Out-Null
 
-        $package.Version
+        Write-Verbose "Installed package $($package.Version)"
+    }
     }
 }
 
