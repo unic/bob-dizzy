@@ -9,5 +9,5 @@ nuget GitVersion
 
 source https://teamcity.unic.com/httpAuth/app/nuget/v1/FeedService.svc/ username: "%PAKET_USER%" password: "%PAKET_PASSWORD%"
 
-nuget Unic.Bob.Config 0.2.0-invokebobcommand
+nuget Unic.Bob.Config Prerelease
 nuget Unic.Bob.Keith Prerelease
