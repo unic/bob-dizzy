@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "gitbook-plugin-unictheme": "git+https://git.unic.com/scm/scmbob/gitbook-plugin-unictheme.git"
+  }
+}

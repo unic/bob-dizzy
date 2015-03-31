@@ -1,0 +1,10 @@
+{
+    "plugins": [
+        "unictheme"
+    ],
+    "links": {
+        "sharing": {
+            "all": false
+        }
+    }
+}

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+  <package >
+    <metadata>
+      <id>$ID$</id>
+      <authors>Unic AG</authors>
+      <version>$VERSION$</version>
+      <owners>Unic AG</owners>
+      <iconUrl>https://www.unic.com/img/unic-logo.png</iconUrl>
+      <requireLicenseAcceptance>false</requireLicenseAcceptance>
+      <description>$ID$</description>
+    </metadata>
+    <files>
+        ##FILES##
+    </files>
+  </package>
