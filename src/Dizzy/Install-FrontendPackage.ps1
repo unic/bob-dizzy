@@ -26,8 +26,6 @@ function Install-FrontendPackage
     Process
     {
         Write-Verbose "Install frontend to $Location"
-        $fileSystem = New-Object NuGet.PhysicalFileSystem $Location
-        $package.GetFiles().Path | % {"$Location\$_"} | ? {Test-Path $_} | % {rm $_}
-        $fileSystem.AddFiles($Package.GetFiles(), $Location)
+        Install-NugetPackage -Package $Package -OutputLocation $Location
     }
 }
