@@ -11,4 +11,4 @@ source https://teamcity.unic.com/httpAuth/app/nuget/v1/FeedService.svc/ username
 
 nuget Unic.Bob.Config
 nuget Unic.Bob.Keith
-nuget Unic.Bob.Skip 0.1.0-scmbob0407
+nuget Unic.Bob.Skip
