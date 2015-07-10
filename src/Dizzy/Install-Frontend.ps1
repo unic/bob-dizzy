@@ -95,12 +95,7 @@ function Install-Frontend
             Write-Verbose "Create directory $Location"
             mkdir $Location | Out-Null
         }
-        $assetsPath = "$Location\assets"
-        if(Test-Path $assetsPath) {
-            Write-Verbose "Remove directory $assetsPath"
-            rm $assetsPath -Recurse
-        }
-
+        
         Install-FrontendPackage -Package $package -Location $location| Out-Null
 
         Write-Verbose "Installed package $($package.Version)"
