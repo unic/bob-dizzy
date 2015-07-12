@@ -20,7 +20,7 @@ After Dizzy is installed you can simply execute `Install-Frontend` to install th
 
 Which frontend version will be installed depends on, which branch you're currenty working on:
 
-* develop: Newest with *-develop*
+* develop: Dizzy will try to get a *-develop* package with the same version as the current develop branch. If there is none the newest *-release* will be used.
 * release/\* or hotfix/\*: Newest with *-release*
 * feature/\*: Newest with *-develop*
 
