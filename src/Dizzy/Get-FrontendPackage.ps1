@@ -48,7 +48,7 @@ function Get-FrontendPackage
     )
     Process
     {
-        $packages = Get-NugetPackage -PackageId $PackageId -ProjectPath $ProjectPath
+        $packages = Get-NugetPackage -PackageId $PackageId -ProjectPath $ProjectPath -Source $source
 
         $releasePattern = "release????"
 
