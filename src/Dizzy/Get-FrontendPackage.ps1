@@ -43,21 +43,12 @@ function Get-FrontendPackage
         [Parameter(Mandatory=$true)]
         [string]$Source,
         [string] $Prerelease,
-        [string] $Version = "*"
+        [string] $Version = "*",
+        [string] $ProjectPath
     )
     Process
     {
-        $fs = New-Object NuGet.PhysicalFileSystem $pwd
-        $setting = [NuGet.Settings]::LoadDefaultSettings($fs,  [System.Environment]::GetFolderPath("ApplicationData") + "\NuGet\NuGet.config", $null);
-        $sourceProvider = New-Object NuGet.PackageSourceProvider $setting
-
-        $credentialProvider = New-Object NuGet.SettingsCredentialProvider -ArgumentList ([NuGet.ICredentialProvider][NuGet.NullCredentialProvider]::Instance), ([NuGet.IPackageSourceProvider]$sourceProvider)
-
-        [NuGet.HttpClient]::DefaultCredentialProvider = $credentialProvider
-
-        $repo = New-Object  NuGet.DataServicePackageRepository $Source
-
-        $packages = $repo.FindPackagesById($PackageId)
+        $packages = Get-NugetPackage -PackageId $PackageId -ProjectPath $ProjectPath
 
         $releasePattern = "release????"
 
