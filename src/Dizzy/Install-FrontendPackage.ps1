@@ -26,6 +26,6 @@ function Install-FrontendPackage
     Process
     {
         Write-Verbose "Install frontend to $Location"
-        Install-NugetPackage -Package $Package -OutputLocation $Location
+        Install-NugetPackage -Package $Package -OutputLocation $Location -RemoveFiles $true
     }
 }

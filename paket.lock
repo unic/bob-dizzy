@@ -7,9 +7,9 @@ NUGET
     NuGet.CommandLine (2.8.5)
     NuGet.Core (2.8.5)
       Microsoft.Web.Xdt (>= 2.1.0)
-    Pester (3.3.9)
+    Pester (3.3.11)
   remote: https://teamcity.unic.com/httpAuth/app/nuget/v1/FeedService.svc
   specs:
-    Unic.Bob.Config (1.3.0)
+    Unic.Bob.Config (1.4.0)
     Unic.Bob.Keith (1.1.0)
-    Unic.Bob.Skip (1.0.1)
+    Unic.Bob.Skip (1.1.0)
