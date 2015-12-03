@@ -86,6 +86,14 @@ function Install-Frontend
             Write-Error "Source for frontend package could not be found. Make sure Bob.config contains the NuGetFeed key."
         }
 
+        Write-Verbose "Found the following situation:"
+        Write-Verbose "    Current Branch on repository: $Branch"
+        Write-Verbose "    Frontend package id:          $PackageId"
+        Write-Verbose "    Package source:               $Source"
+        Write-Verbose "    Package name:                 $Name"
+        Write-Verbose "    Package Version:              $Version"
+        Write-Verbose "Search corresponding Frontend package..."
+        
         $package = Get-FrontendPackage -Branch $Branch -PackageId $PackageId -Source $Source -Prerelease $Name -Version $Version -ProjectPath $ProjectPath
         if(-not $package) {
             Write-Error "Frontend package form branch $Branch with the ID $PackageId in $Source could not be found."
