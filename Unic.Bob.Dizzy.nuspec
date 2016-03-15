@@ -14,6 +14,6 @@
     </metadata>
     <files>
         <file src="src\**" />
-        <file src="packages\**" target="tools" />
+        <file src="packages\**" target="tools" exclude="**\package\services\metadata\core-properties\**;**\Unic.Bob.Keith\**;**\pester\**" />
     </files>
   </package>

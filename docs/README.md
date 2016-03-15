@@ -20,13 +20,17 @@ After Dizzy is installed you can simply execute `Install-Frontend` to install th
 
 Which frontend version will be installed depends on, which branch you're currenty working on:
 
-* develop: Dizzy will try to get a *-develop* package with the same version as the current develop branch. If there is none the newest *-release* will be used.
+* develop: Dizzy will try to get a *-develop* package with the same version as the current develop<sup>1)</sup> branch. If there is none the newest *-release* will be used.
 * release/\* or hotfix/\*: Newest with *-release*
 * feature/\*: Newest with *-develop*
 
-Optionally a parameter can be added to *Install-Package* which specifies the prerelease tag to use. This is escpecially useful if you want to install assets from a frontend feature-branch.
+Optionally a parameter can be added to *Install-Frontend* which specifies the prerelease tag to use. This is escpecially useful if you want to install assets from a frontend feature-branch.
 
 	Install-Frontend MySuperFeature
+
+<sup>1)</sup> GitVersion is used to detect your local develop version. As GitVersion reads out its informations from your local git repository, you need to have an up to date master-branch as well
+as a list of all the tags in your local copy of the git repository. If GitVersion calculates the version on an outdated master branch it may happen that you'll search for and download an old
+frontend artefact. 
 
 
 ## Guidelines for Frontend Engineers
