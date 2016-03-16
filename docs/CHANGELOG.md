@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.3.1
+* Removed Keith and Pester from Nuget package
+
 ## 1.3
 * Updated Verbosity of Dizzy for better understanding its magic.
 
