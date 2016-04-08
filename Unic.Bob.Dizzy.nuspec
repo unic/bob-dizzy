@@ -8,10 +8,7 @@
       <iconUrl>https://www.unic.com/img/unic-logo.png</iconUrl>
       <requireLicenseAcceptance>false</requireLicenseAcceptance>
       <description>Dizzy creates and restores frontend packages.</description>
-      <dependencies>
-          <dependency id="Unic.Bob.Config" />
-      </dependencies>
-    </metadata>
+     </metadata>
     <files>
         <file src="src\**" />
         <file src="packages\**" target="tools" exclude="**\package\services\metadata\core-properties\**;**\Unic.Bob.Keith\**;**\pester\**" />

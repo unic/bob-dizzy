@@ -4,12 +4,12 @@ NUGET
     GitVersion (2.0.1)
     LibGit2Sharp (0.21.0.176)
     Microsoft.Web.Xdt (2.1.1)
-    NuGet.CommandLine (2.8.5)
-    NuGet.Core (2.8.5)
+    NuGet.CommandLine (2.8.6)
+    NuGet.Core (2.10.1)
       Microsoft.Web.Xdt (>= 2.1.0)
-    Pester (3.3.11)
+    Pester (3.4.0)
   remote: https://teamcity.unic.com/httpAuth/app/nuget/v1/FeedService.svc
   specs:
-    Unic.Bob.Config (1.4.0)
+    Unic.Bob.Config (2.0.0)
     Unic.Bob.Keith (1.1.0)
-    Unic.Bob.Skip (1.1.0)
+    Unic.Bob.Skip (2.0.0)
