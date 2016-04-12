@@ -96,7 +96,7 @@ function Install-Frontend
         
         $package = Get-FrontendPackage -Branch $Branch -PackageId $PackageId -Source $Source -Prerelease $Name -Version $Version -ProjectPath $ProjectPath
         if(-not $package) {
-            Write-Error "Frontend package form branch $Branch with the ID $PackageId in $Source could not be found."
+            Write-Error "Frontend package from branch $Branch with the ID $PackageId in $Source could not be found."
         }
 
         if(-not (Test-Path $Location )) {
