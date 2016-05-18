@@ -43,8 +43,8 @@ function Install-Frontend
         $config = Get-ScProjectConfig $ProjectPath
         $webPath = $config.WebRoot
         
-        if(-not $config.GlobalWebPath -and -not $config.WebsiteCodeName -and -not $config.WebFolderName) {
-            Write-Error "GlobalWebPath or WebsiteCodeName or WebFolderName are not configured."
+        if(-not $webPath) {
+            Write-Error "Web path is not configured."
         }
         
         if ($config.FrontendOutputDirectoryPath) {
@@ -53,6 +53,12 @@ function Install-Frontend
                 
                 $Location = Join-Path $webPath $config.FrontendOutputDirectoryPath
                 
+            }
+            else {
+                
+                mkdir Join-Path $webPath $config.FrontendOutputDirectoryPath
+                
+                $Location = Join-Path $webPath $config.FrontendOutputDirectoryPath                
             }
         }
         
