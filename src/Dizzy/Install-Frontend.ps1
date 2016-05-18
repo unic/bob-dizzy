@@ -56,7 +56,7 @@ function Install-Frontend
             }
             else {
                 
-                mkdir Join-Path $webPath $config.FrontendOutputDirectoryPath
+                mkdir (Join-Path $webPath $config.FrontendOutputDirectoryPath) | Out-Null
                 
                 $Location = Join-Path $webPath $config.FrontendOutputDirectoryPath                
             }
