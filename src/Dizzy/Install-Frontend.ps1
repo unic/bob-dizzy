@@ -3,7 +3,7 @@
 Installs locally the correct frontend package depending on context.
 
 .DESCRIPTION
-Installs the newest frontend package for the current branch to the local WebRoot.
+Installs the newest frontend package. By default it installs the frontend to the WebRoot. It is possible to install frontend to the custom directory by setting the relative path with FrontendOutputDirectoryPath node in Bob.config.
 
 .PARAMETER Name
 If the `Name` will be specified, this prerelease will be used instead of the current branch name.
@@ -41,11 +41,27 @@ function Install-Frontend
         Invoke-BobCommand {
 
         $config = Get-ScProjectConfig $ProjectPath
+        $webPath = $config.WebRoot
+        
         if(-not $config.GlobalWebPath -and -not $config.WebsiteCodeName -and -not $config.WebFolderName) {
             Write-Error "GlobalWebPath or WebsiteCodeName or WebFolderName are not configured."
         }
-        $Location = "$($config.GlobalWebPath)\$($config.WebsiteCodeName)\$($config.WebFolderName)"
-
+        
+        if ($config.FrontendOutputDirectoryPath) {
+            
+            if (Test-Path (Join-Path $webPath $config.FrontendOutputDirectoryPath)) {
+                
+                $Location = Join-Path $webPath $config.FrontendOutputDirectoryPath
+                
+            }
+        }
+        
+        if (-not $Location) {
+            
+            $Location = "$($config.GlobalWebPath)\$($config.WebsiteCodeName)\$($config.WebFolderName)"
+            
+        }
+        
         if(-not $Location) {
             Write-Error "No Location could be found to extract."
         }
