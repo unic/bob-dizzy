@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.1
+* Added support for custom directory for the frontend installation
+
+## 2.0
+* Added support for Bob 2.0
+
 ## 1.3.1
 * Removed Keith and Pester from Nuget package
 
