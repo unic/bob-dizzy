@@ -45,7 +45,14 @@ function Get-PackageVersion
     else {
         $localBuildBranch = $buildBranch -replace "origin/", ""
         $featureBranch = $localBuildBranch -replace "feature/", ""
-        $version + "-" + $featureBranch+ "-" + $paddedBuildNumber
+        
+        if ($featureBranch.length -gt 15) {
+            
+            $featureBranch = $featureBranch.Substring(0, 15)
+            
+        }
+        
+        $version + "-" + $featureBranch + "-" + $paddedBuildNumber
     }
   }
 }
