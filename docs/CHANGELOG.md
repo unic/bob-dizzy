@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.2
+* Updated the theme
+
 ## 2.1
 * Added support for custom directory for the frontend installation
 
