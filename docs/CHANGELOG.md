@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.2
+* Updated the theme
+
 ## 2.1.1
 * Fixed a problem with too long frontend feature branch names
 
