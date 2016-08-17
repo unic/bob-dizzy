@@ -145,7 +145,9 @@ function Install-ScNugetPackage {
             Write-Verbose "    Get newest package of $($package.ID) with version pattern $([string]::Join(", ", $versionPatterns))"
 
             $nugetPackageToInstall = GetNugetPackage $package.ID $versionPatterns $config.NuGetFeed
-
+            if(-not $nugetPackageToInstall) {
+                Write-Error "No package was found with ID $($package.ID) and verson pattern $($versionPatterns) on the NuGet feed $($config.NuGetFeed)"
+            }
             Write-Verbose "    Found version $($nugetPackageToInstall.Version) of package $($package.ID)"
 
             if($package.Target) {
