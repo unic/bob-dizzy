@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-Installs all configure NuGet packages to the webroot or to the specified path.
+Installs all configured NuGet packages to the webroot or to the specified path.
 
 
 .DESCRIPTION
@@ -25,7 +25,7 @@ Install-ScNugetPackage
 Install-ScNugetPackage Customer.Frontend
 
 .EXAMPLE
-Install-ScNugetPackage -OutputDirecoty D:\work\project\packing
+Install-ScNugetPackage -OutputDirectory D:\work\project\packing
 
 #>
 
@@ -146,7 +146,7 @@ function Install-ScNugetPackage {
 
             $nugetPackageToInstall = GetNugetPackage $package.ID $versionPatterns $config.NuGetFeed
             if(-not $nugetPackageToInstall) {
-                Write-Error "No package was found with ID $($package.ID) and verson pattern $($versionPatterns) on the NuGet feed $($config.NuGetFeed)"
+                Write-Error "No package was found with ID $($package.ID) and version pattern $($versionPatterns) on the NuGet feed $($config.NuGetFeed)"
             }
             Write-Verbose "    Found version $($nugetPackageToInstall.Version) of package $($package.ID)"
 

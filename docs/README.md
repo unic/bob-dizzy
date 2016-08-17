@@ -24,7 +24,7 @@ Use the `NugetPackages` node in the Bob.config for this:
   </NugetPackages>
 ```
 
-The `NugetPackages` node must contain a list of `Package`'s. A package have the following attributes:
+The `NugetPackages` node must contain a list of `Package`'s. A package has the following attributes:
 
 | ID | The id of the NuGet package |
 | Target | The folder inside the Web-Root where the content of the NuGet package will be extracted. |
