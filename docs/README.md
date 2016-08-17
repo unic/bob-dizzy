@@ -1,7 +1,7 @@
 <div class="chapterlogo">![Dizzy](Dizzy.jpg)</div>
 # Dizzy
 
-Dizzy is responsible for the frontend suff. From package creation to package installation, Dizzy is responsible for the whole lifecycle of the integration of the frontend assets.
+Dizzy is responsible for the frontend stuff. From package creation to package installation, Dizzy is responsible for the whole lifecycle of the integration of the frontend assets.
 
 The base idea is that, for each version of the frontend assets, a NuGet package is generated, which is then used in a further build step and locally to develop the application.
 
@@ -14,19 +14,37 @@ Then install the **Unic.Bob.Dizzy** package in your Website project:
 
     PM>Install-Package Unic.Bob.Dizzy
 
-After Dizzy is installed you can simply execute `Install-Frontend` to install the newest version of the frontend in the Web-Root
+After Dizzy is installed you need to configure which NuGet packages are installed. 
+Use the `NugetPackages` node in the Bob.config for this: 
 
-    PM>Install-Frontend
+```
+  <NugetPackages>
+    <Package ID="Customer.Frontend" Version="2.5.0-develop0184" />
+    <Package ID="Customer.FrontendRWD" Target="assets-rwd" />
+  </NugetPackages>
+```
 
-Which frontend version will be installed depends on, which branch you're currenty working on:
+The `NugetPackages` node must contain a list of `Package`'s. A package have the following attributes:
+
+| ID | The id of the NuGet package |
+| Target | The folder inside the Web-Root where the content of the NuGet package will be extracted. |
+| Version | A version pattern to use, to find the correct package. `*` can be used as a wildcard. If a wildcard is used, the latest package will be selected.  | 
+
+To install or update the packages on your local machine, run  `Install-ScNugetPackage`:
+
+    PM>Install-ScNugetPackage
+
+If no version is specified for a package, the version will be detected according to the version of the backend repository:
 
 * develop: Dizzy will try to get a *-develop* package with the same version as the current develop<sup>1)</sup> branch. If there is none the newest *-release* will be used.
 * release/\* or hotfix/\*: Newest with *-release*
 * feature/\*: Newest with *-develop*
 
-Optionally a parameter can be added to *Install-Frontend* which specifies the prerelease tag to use. This is escpecially useful if you want to install assets from a frontend feature-branch.
+Optionally a parameter can be added to *Install-ScNugetPackage* which specifies which packages should be installed.
 
-	Install-Frontend MySuperFeature
+	Install-ScNugetPackage Customer.Frontend
+
+You can use it if you only want to update a specific package and not all packages.
 
 <sup>1)</sup> GitVersion is used to detect your local develop version. As GitVersion reads out its informations from your local git repository, you need to have an up to date master-branch as well
 as a list of all the tags in your local copy of the git repository. If GitVersion calculates the version on an outdated master branch it may happen that you'll search for and download an old
