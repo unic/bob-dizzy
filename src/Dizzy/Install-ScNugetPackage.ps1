@@ -1,30 +1,31 @@
 <#
 .SYNOPSIS
-Installs locally the correct frontend package depending on context.
+Installs all configure NuGet packages to the webroot or to the specified path.
+
 
 .DESCRIPTION
-Installs the newest frontend package. By default it installs the frontend to the WebRoot. It is possible to install frontend to the custom directory by setting the relative path with FrontendOutputDirectoryPath node in Bob.config.
+Installs all NuGet packages which are configured in the Bob.config
+either to the web-root or to the specified directory.
 
-.PARAMETER Name
-If the `Name` will be specified, this prerelease will be used instead of the current branch name.
+.PARAMETER NugetPackage
+If the `NugetPackage` parameter is specified only the this packages wil be installed.
+If nothing is specified all packages will be installed.
+
+.PARAMETER OutputDirectory
+The directory where the packages will be extracted. 
+If nothing is specified, the packages will be installed to the web-root. 
 
 .PARAMETER ProjectPath
 The path to the website project. If it's not specified, the current Visual Studio website project will be used.
 
-.PARAMETER Branch
-The branch name to use to find the correct frontend pacakge.
-If it's not specified the current branch will be used.
-
-.PARAMETER Version
-The version (Major, Minor, Patch) of the frontend package to install.
-If it's not specified, the version will be calculated with GitVersion.
-If no frontend package with this version exists, the latest release will be used.
+.EXAMPLE
+Install-ScNugetPackage
 
 .EXAMPLE
-Install-Frontend
+Install-ScNugetPackage Customer.Frontend
 
 .EXAMPLE
-Install-Frontend -Name myFeatureBranch
+Install-ScNugetPackage -OutputDirecoty D:\work\project\packing
 
 #>
 
@@ -87,9 +88,8 @@ function Install-ScNugetPackage {
             $versionFinder = New-Object GitVersion.GitVersionFinder
             $version = $versionFinder.FindVersion($ctx).ToString("j")
 
-            Write-Verbose "Found the following situation:"
-            Write-Verbose "    Current Branch on repository: $Branch"
-            Write-Verbose "    Version of repository:  $Version"
+            Write-Verbose "        Current Branch on repository: $Branch"
+            Write-Verbose "        Version of repository:  $Version"
 
             return @{
                 "branch" = $branch
@@ -121,21 +121,32 @@ function Install-ScNugetPackage {
             $OutputDirectory = $config.WebRoot
         }
 
+        if($NugetPackage) {
+            $NugetPackage = $NugetPackage | % {$_.ToLower()}
+        } 
+
         $packages = $config.NugetPackages
         foreach($package in $packages) {
-            if($NugetPackage -and -not $NugetPackage.Contains($package.ID)) {
-                # If the NugetPackage was specified, we only want to install the specified packages.  
+
+            Write-Verbose "============"
+            if($NugetPackage -and -not $NugetPackage.Contains($package.ID.ToLower())) {
+                # If the NugetPackage was specified, we only want to install the specified packages.
+                Write-Verbose "Skip $($package.ID)"  
                 continue;
             }
+            Write-Verbose "Start instalation of $($package.ID)"
 
             $versionPatterns = $package.Version
             if(-not $versionPatterns) {
+                Write-Verbose "    No version is specified for $($package.ID). Calculate version pattern according to current context:"
                 $versionPatterns = GetPackageVersion $package.ID $config.NuGetFeed $config
             }
             
-            Write-Verbose "Try to find newest package with version pattern $([string]::Join(", ", $versionPatterns))"
+            Write-Verbose "    Get newest package of $($package.ID) with version pattern $([string]::Join(", ", $versionPatterns))"
 
             $nugetPackageToInstall = GetNugetPackage $package.ID $versionPatterns $config.NuGetFeed
+
+            Write-Verbose "    Found version $($nugetPackageToInstall.Version) of package $($package.ID)"
 
             if($package.Target) {
                 $location = Join-Path $OutputDirectory $package.Target
@@ -144,8 +155,9 @@ function Install-ScNugetPackage {
                 $location = $OutputDirectory
             }
 
-
-            Install-FrontendPackage -Package $nugetPackageToInstall -Location $location | Out-Null
+            Write-Verbose "    Start installation of package $($package.ID) $($nugetPackageToInstall.Version) to $location"
+            Install-NugetPackage -Package $nugetPackageToInstall -OutputLocation $Location
+            Write-Verbose "    Installed version $($package.ID) $($nugetPackageToInstall.Version) to $location"
         }
         }
     }
