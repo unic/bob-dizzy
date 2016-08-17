@@ -14,31 +14,4 @@ To be able to use the Install-ScNugetPackage feature in your project you need to
 The `FrontendPackage` and the `FrontendOutputDirectoryPath` can then be removed from the Bob.config.
 0. Add `<BumpInstallNugetPackages>1</BumpInstallNugetPackages>` and `<BumpDisableInstallFrontend>1</BumpDisableInstallFrontend>` to the Bob.config
 0. If you have an `Install-Frontend` command in your commands.json, update it accordingaly
-0. On TeamCity, disable the `Install Frontend` step and create a Powershell step with the following source code: 
-```
-$ErrorActionPreference = "Stop"
-
-trap {
-  Write-Host $_
-  $nuget = "%teamcity.tool.NuGet.CommandLine.DEFAULT.nupkg%\tools\nuget.exe"
-  iex "$nuget sources remove -Name tc -Source %teamcity.nuget.feed.auth.server%"
-  
-  Write-Error $_
-}
-$ErrorActionPreference = "Stop"
-Write-Host "##teamcity[progressMessage 'Install Frontend']"
-
-Import-Module %unic.nuget.packages%/Unic.Bob.Dizzy.*/Dizzy
-
-$nuget = "%teamcity.tool.NuGet.CommandLine.DEFAULT.nupkg%\tools\nuget.exe"
-
-iex "$nuget sources add -Name tc -Source %teamcity.nuget.feed.auth.server% -UserName %system.teamcity.auth.userId% -Password %system.teamcity.auth.password%"
-
-Install-ScNugetPackage -OutputDirectory "%unic.build.output.websites%"
-
-Write-Host "Finished with installing Frontend"
-
-iex "$nuget sources remove -Name tc -Source %teamcity.nuget.feed.auth.server%"
-Write-Host "Removed TC source"
-```
-
+0. On TeamCity, disable the `Install Frontend` step
