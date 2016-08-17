@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.0
+* Abstracted the frontend logic, so that multiple NuGet packages can be installed to the web-root.
+Migration guide: https://teamcity.unic.com/repository/download/Sitecore_Frameworks_Bob_TheBook_BuildTheBook/.lastSuccessful/Dizzy/MigrationTo30.html
+
 ## 2.2
 * Updated the theme
 
