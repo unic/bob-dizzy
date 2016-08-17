@@ -1,8 +1,10 @@
 <#
 .SYNOPSIS
+[Deprecated] Use Install-ScNugetPackage instead (https://teamcity.unic.com/repository/download/Sitecore_Frameworks_Bob_TheBook_BuildTheBook/.lastSuccessful/Dizzy/MigrationTo30.html)
 Installs locally the correct frontend package depending on context.
 
 .DESCRIPTION
+[Deprecated] Use Install-ScNugetPackage instead (https://teamcity.unic.com/repository/download/Sitecore_Frameworks_Bob_TheBook_BuildTheBook/.lastSuccessful/Dizzy/MigrationTo30.html)
 Installs the newest frontend package. By default it installs the frontend to the WebRoot. It is possible to install frontend to the custom directory by setting the relative path with FrontendOutputDirectoryPath node in Bob.config.
 
 .PARAMETER Name
@@ -38,6 +40,7 @@ function Install-Frontend
     )
     Process
     {
+        Write-Warning "Install-Frontend is deprecated since Dizzy 3.0. Use Install-ScNugetPackage instead (https://teamcity.unic.com/repository/download/Sitecore_Frameworks_Bob_TheBook_BuildTheBook/.lastSuccessful/Dizzy/MigrationTo30.html)"
         Invoke-BobCommand {
 
         $config = Get-ScProjectConfig $ProjectPath
