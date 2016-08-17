@@ -12,7 +12,7 @@ To be able to use the Install-ScNugetPackage feature in your project you need to
 0. Update Dizzy to a version newer than 3.0
 0. Add the `NugetPackages` config key in the Bob.config according to [Dizzy docs](README.md). `
 The `FrontendPackage` and the `FrontendOutputDirectoryPath` can then be removed from the Bob.config.
-0. Add `<ActivateModernInstallFrontendInBump>1</ActivateModernInstallFrontendInBump>` to the Bob.config
+0. Add `<BumpInstallNugetPackages>1</BumpInstallNugetPackages>` and `<BumpDisableInstallFrontend>1</BumpDisableInstallFrontend>` to the Bob.config
 0. If you have an `Install-Frontend` command in your commands.json, update it accordingaly
 0. On TeamCity, disable the `Install Frontend` step and create a Powershell step with the following source code: 
 ```
