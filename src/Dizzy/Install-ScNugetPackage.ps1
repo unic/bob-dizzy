@@ -72,18 +72,17 @@ function Install-ScNugetPackage {
                 Write-Error "$website does not contain a git repository."
             }
 
-            $repo = New-Object LibGit2Sharp.Repository $repoDir, $null
+            $repo = New-Object LibGit2Sharp.Repository $repoDir
 
-            $branch = $repo.Head.Name
+            $branch = $repo.Head.FriendlyName
             if($branch -eq "(no branch)") {
                 Write-Error "HEAD is detached. Please ensure you are on a valid branch or provide the 'Branch' parameter."
             }
 
-            [GitVersion.Logger]::WriteInfo = {}
-            [GitVersion.Logger]::WriteWarning = {}
-            [GitVersion.Logger]::WriteError = {}
+            [GitVersion.Logger]::SetLoggers({}, {}, {})
 
             $gitVersionConfig = New-Object GitVersion.Config
+            [GitVersion.ConfigurationProvider]::ApplyDefaultsTo($gitVersionConfig)
             $ctx = New-Object GitVersion.GitVersionContext $repo, $gitVersionConfig
             $versionFinder = New-Object GitVersion.GitVersionFinder
             $version = $versionFinder.FindVersion($ctx).ToString("j")
