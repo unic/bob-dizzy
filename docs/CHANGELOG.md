@@ -1,5 +1,8 @@
 # Changelog
 
+## 3.1
+* Update GitVersion to v3
+
 ## 3.0.1
 * Fix migration guide
 
