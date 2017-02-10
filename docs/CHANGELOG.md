@@ -1,5 +1,8 @@
 # Changelog
 
+## 3.2
+* TeamCity build of Frontend package: added support for 'build-id' property in metadata.json to solve problems with release builds
+
 ## 3.1
 * Update GitVersion to v3
 
