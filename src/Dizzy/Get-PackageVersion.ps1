@@ -34,7 +34,11 @@ function Get-PackageVersion
     $metadata = Get-Content -Raw $MetaDataJsonPath | ConvertFrom-Json
     $version = $MajorMinorPatch
     $buildBranch = $metadata.'build-branch'
-    $paddedBuildNumber = "{0:D4}" -f [int]$metadata.'build-version'
+    $buildId = $metadata.'build-id'
+    if(-not $buildId) {
+        $buildId = $metadata.'build-version'
+    }
+    $paddedBuildNumber = "{0:D4}" -f [int]$buildId
     $Branch = $Branch -replace "refs/heads/", ""
     if($Branch -eq "build-develop") {
         $version + "-develop" + $paddedBuildNumber
