@@ -1,10 +1,13 @@
 source https://nuget.org/api/v2
 
-nuget NuGet.CommandLine < 3
-nuget NuGet.Core < 3
+nuget GitVersion
+nuget GitVersion.CommandLine
+nuget libGit2Sharp
+nuget LibGit2Sharp.NativeBinaries
+nuget NuGet.CommandLine
+nuget NuGet.Core
+nuget Microsoft.Web.Xdt
 nuget Pester
-nuget libGit2Sharp < 0.22
-nuget GitVersion < 3
 nuget Unic.Bob.Wendy
 nuget Unic.Bob.Keith
 nuget Unic.Bob.Skip
