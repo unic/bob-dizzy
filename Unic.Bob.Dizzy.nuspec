@@ -5,13 +5,14 @@
       <authors>Unic AG</authors>
       <version>$VERSION$</version>
       <owners>Unic AG</owners>
-      <iconUrl>https://www.unic.com/img/unic-logo.png</iconUrl>
+      <iconUrl>https://github.com/unic/unic/raw/master/unic_nuget.png</iconUrl>
+      <projectUrl>https://github.com/unic/bob-dizzy</projectUrl>
       <requireLicenseAcceptance>false</requireLicenseAcceptance>
-      <description>Dizzy creates and restores frontend packages.</description>
+      <description>Dizzy creates and restores Nuget packages.</description>
      </metadata>
     <files>
         <file src="src\**" />
-        <file src="packages\**" target="tools" exclude="**\package\services\metadata\core-properties\**;**\Unic.Bob.Keith\**;**\pester\**" />
         <file src="lib\**" target="tools" />
+        <file src="packages\**" target="tools" exclude="**\package\services\metadata\core-properties\**;**[Content_Types].xml;**\_rels\**;**\Unic.Bob.Keith\**;**\pester\**" />
     </files>
   </package>

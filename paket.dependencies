@@ -1,14 +1,13 @@
 source https://nuget.org/api/v2
 
-
-nuget NuGet.CommandLine < 3
-nuget NuGet.Core < 3
-nuget Pester
-nuget libGit2Sharp 0.23
 nuget GitVersion
-
-source https://teamcity.unic.com/httpAuth/app/nuget/v1/FeedService.svc/ username: "%PAKET_USER%" password: "%PAKET_PASSWORD%"
-
-nuget Unic.Bob.Config
+nuget GitVersion.CommandLine
+nuget libGit2Sharp
+nuget LibGit2Sharp.NativeBinaries
+nuget NuGet.CommandLine
+nuget NuGet.Core
+nuget Microsoft.Web.Xdt
+nuget Pester
+nuget Unic.Bob.Wendy
 nuget Unic.Bob.Keith
 nuget Unic.Bob.Skip

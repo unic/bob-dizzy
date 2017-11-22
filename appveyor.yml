@@ -1,0 +1,55 @@
+version: '{build}'
+image: Visual Studio 2017
+
+environment:
+  RepoName: bob-dizzy
+  NuGet_PackageId: Unic.Bob.Dizzy
+  Nuspec_File: .\%NuGet_PackageId%.nuspec
+  NuGetToken:
+    secure: jhODVb/iVko3b4Y9p1tOMP9LeDy6OQEYePDIDT6lfAOgNnJixjJpJBAJj/gtkDLc
+  Artefact_Output_Dir: .\output
+  GithubEmail: team-unic@unic.com
+  GithubUsername: team-unic
+  GithubAccessTokenTeamUnic:
+    secure: BCEthL/NRFeg5eKK9CgmwbySILxWjMUjpvExHC0oGl1jjAT4kMBAohzh9m/xsVDh
+
+install:
+  - choco install gitversion.portable -y
+  - ps: gitversion /l console /output buildserver
+  - ps: .\restore.ps1
+
+  # Setup GIT
+  - git config --global user.email %GithubEmail%
+  - git config --global user.name %GithubUsername%
+  - git config --global push.default simple
+  - git config --global core.autocrlf true
+  - git config --global core.safecrlf false
+  - git config --global credential.helper store
+  
+assembly_info:
+  patch: false
+
+build_script:
+  - cmd: nuget pack %Nuspec_File% -version "%GitVersion_NuGetVersionV2%" -OutputDirectory %Artefact_Output_Dir%
+  - ps: |
+      $ErrorActionPreference = 'Stop';
+      .\generateDocs.ps1
+  - 7z a -r %Artefact_Output_Dir%\docs.zip %APPVEYOR_BUILD_FOLDER%\docs-generated\_book
+
+after_build:
+  - cmd: appveyor PushArtifact %Artefact_Output_Dir%\%NuGet_PackageId%.%GitVersion_NuGetVersionV2%.nupkg
+  - cmd: appveyor PushArtifact %Artefact_Output_Dir%\docs.zip
+
+test_script:
+  - ps: .\runTests.ps1
+
+deploy_script:
+  - ps: |
+      $ErrorActionPreference = 'Stop';
+      if($env:appveyor_repo_branch -eq 'master' -Or $env:appveyor_repo_tag -eq 'true') {
+        nuget push "$($env:Artefact_Output_Dir)\$($env:NuGet_PackageId).$($env:GitVersion_NuGetVersionV2).nupkg" -ApiKey $($env:NuGetToken) -Source https://www.nuget.org/api/v2/package
+      }
+      if($env:appveyor_repo_tag -eq 'true') {
+        Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:GithubAccessTokenTeamUnic):x-oauth-basic@github.com`n";
+        .\pushDocs.ps1 $env:APPVEYOR_BUILD_FOLDER docs-generated\_book https://github.com/unic/$($env:RepoName).git
+      }

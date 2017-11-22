@@ -18,7 +18,7 @@ function ResolvePath() {
 Get-ChildItem -Path $PSScriptRoot\*.ps1 -Exclude *.tests.ps1 | Foreach-Object{ . $_.FullName }
 Export-ModuleMember -Function * -Alias *
 
-Import-Module (ResolvePath "Unic.Bob.Config" "tools\BobConfig") -force
+Import-Module (ResolvePath "Unic.Bob.Wendy" "tools\Wendy") -force
 Import-Module (ResolvePath "Unic.Bob.Skip" "Skip") -Force
 $VerbosePreference = "Continue"
 [System.Reflection.Assembly]::LoadFrom((ResolvePath "Nuget.Core" "lib\net40-client\NuGet.Core.dll"))

@@ -1,10 +1,12 @@
 {
+    "gitbook": "3.2.3",
     "plugins": [
-        "unictheme"
+        "theme-unic@git+https://github.com/unic/gitbook-plugin-theme-unic.git"
     ],
     "links": {
         "sharing": {
             "all": false
         }
     }
+
 }
