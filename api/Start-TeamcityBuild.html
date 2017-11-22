@@ -1,0 +1,573 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Start-TeamcityBuild · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-theme-unic/unic.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="Write-FrontendPackage.html" />
+    
+    
+    <link rel="prev" href="Set-TeamcityVariablesFromMetadata.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../Cheatsheet.html">
+            
+                <a href="../Cheatsheet.html">
+            
+                    
+                    Cheatsheet for Frontend Devs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../MigrationTo30.html">
+            
+                <a href="../MigrationTo30.html">
+            
+                    
+                    Migration to Dizzy 3.0
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Dizzy - API
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="Get-BackendBranch.html">
+            
+                <a href="Get-BackendBranch.html">
+            
+                    
+                    Get-BackendBranch
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="Get-FrontendPackage.html">
+            
+                <a href="Get-FrontendPackage.html">
+            
+                    
+                    Get-FrontendPackage
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="Get-PackageVersion.html">
+            
+                <a href="Get-PackageVersion.html">
+            
+                    
+                    Get-PackageVersion
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="GetDirecectoryContainingSubdir.html">
+            
+                <a href="GetDirecectoryContainingSubdir.html">
+            
+                    
+                    GetDirecectoryContainingSubdir
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="Install-Frontend.html">
+            
+                <a href="Install-Frontend.html">
+            
+                    
+                    Install-Frontend
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="Install-FrontendPackage.html">
+            
+                <a href="Install-FrontendPackage.html">
+            
+                    
+                    Install-FrontendPackage
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="Install-ScNugetPackage.html">
+            
+                <a href="Install-ScNugetPackage.html">
+            
+                    
+                    Install-ScNugetPackage
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" data-path="ResolvePath.html">
+            
+                <a href="ResolvePath.html">
+            
+                    
+                    ResolvePath
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.9" data-path="Set-TeamcityVariable.html">
+            
+                <a href="Set-TeamcityVariable.html">
+            
+                    
+                    Set-TeamcityVariable
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.10" data-path="Set-TeamcityVariablesFromMetadata.html">
+            
+                <a href="Set-TeamcityVariablesFromMetadata.html">
+            
+                    
+                    Set-TeamcityVariablesFromMetadata
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.4.11" data-path="Start-TeamcityBuild.html">
+            
+                <a href="Start-TeamcityBuild.html">
+            
+                    
+                    Start-TeamcityBuild
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.12" data-path="Write-FrontendPackage.html">
+            
+                <a href="Write-FrontendPackage.html">
+            
+                    
+                    Write-FrontendPackage
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../CHANGELOG.html">
+            
+                <a href="../CHANGELOG.html">
+            
+                    
+                    Changelog
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Start-TeamcityBuild</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="start-teamcitybuild">Start-TeamcityBuild</h1>
+<p>Starts a new build of a specific TeamCtiy build configuration with a specific branch.</p>
+<h2 id="syntax">Syntax</h2>
+<pre><code>Start-TeamcityBuild [-BuildId] &lt;String&gt; [-Url] &lt;String&gt; [-User] &lt;String&gt; [-Password] &lt;String&gt; [-Branch] &lt;String&gt; [&lt;CommonParameters&gt;]
+</code></pre><h2 id="description">Description</h2>
+<p>Starts a new build of a specific TeamCtiy build configuration with a specific branch
+on a specific TeamCity server.</p>
+<h2 id="parameters">Parameters</h2>
+<pre><code>-BuildId &lt;String&gt;
+</code></pre><p><em>The id of the TeamCity build configuration.</em></p>
+<table>
+<thead>
+<tr>
+<th>Position</th>
+<th>Required</th>
+<th>Default value</th>
+<th>Accept pipeline input</th>
+<th>Accept wildchard characters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>true</td>
+<td></td>
+<td>false</td>
+<td>false</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<pre><code>-Url &lt;String&gt;
+</code></pre><p><em>The TeamCity base url.</em></p>
+<table>
+<thead>
+<tr>
+<th>Position</th>
+<th>Required</th>
+<th>Default value</th>
+<th>Accept pipeline input</th>
+<th>Accept wildchard characters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>true</td>
+<td></td>
+<td>false</td>
+<td>false</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<pre><code>-User &lt;String&gt;
+</code></pre><p><em>The user to log in the TeamCity.</em></p>
+<table>
+<thead>
+<tr>
+<th>Position</th>
+<th>Required</th>
+<th>Default value</th>
+<th>Accept pipeline input</th>
+<th>Accept wildchard characters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3</td>
+<td>true</td>
+<td></td>
+<td>false</td>
+<td>false</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<pre><code>-Password &lt;String&gt;
+</code></pre><p><em>The password of the $User</em></p>
+<table>
+<thead>
+<tr>
+<th>Position</th>
+<th>Required</th>
+<th>Default value</th>
+<th>Accept pipeline input</th>
+<th>Accept wildchard characters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4</td>
+<td>true</td>
+<td></td>
+<td>false</td>
+<td>false</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<pre><code>-Branch &lt;String&gt;
+</code></pre><p><em>The branch to start the build for.</em></p>
+<table>
+<thead>
+<tr>
+<th>Position</th>
+<th>Required</th>
+<th>Default value</th>
+<th>Accept pipeline input</th>
+<th>Accept wildchard characters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5</td>
+<td>true</td>
+<td></td>
+<td>false</td>
+<td>false</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="examples">Examples</h2>
+<h3 id="--------------------------example-1---------------------------">-------------------------- EXAMPLE 1 --------------------------</h3>
+<pre><code>Start-TeamcityBuild -BuildId Sitecore_Project_Build -Url https://teamcity.unic.com -User myuser -Password mypass -Branch develop
+</code></pre>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="Set-TeamcityVariablesFromMetadata.html" class="navigation navigation-prev " aria-label="Previous page: Set-TeamcityVariablesFromMetadata">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="Write-FrontendPackage.html" class="navigation navigation-next " aria-label="Next page: Write-FrontendPackage">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Start-TeamcityBuild","level":"1.4.11","depth":2,"next":{"title":"Write-FrontendPackage","level":"1.4.12","depth":2,"path":"api/Write-FrontendPackage.md","ref":"api/Write-FrontendPackage.md","articles":[]},"previous":{"title":"Set-TeamcityVariablesFromMetadata","level":"1.4.10","depth":2,"path":"api/Set-TeamcityVariablesFromMetadata.md","ref":"api/Set-TeamcityVariablesFromMetadata.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-unic@git+https://github.com/unic/gitbook-plugin-theme-unic.git"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":[]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-unic":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sharing":{"all":false}},"gitbook":"3.2.3"},"file":{"path":"api/Start-TeamcityBuild.md","mtime":"2017-11-22T22:52:45.288Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-11-22T22:54:03.117Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

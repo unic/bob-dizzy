@@ -1,0 +1,9 @@
+/**  
+ * Copyright 2016 Unic AG
+ */
+ 
+.book-body .chapterlogo {
+    float:right;
+    padding-left: 20px;
+    max-width: 33%;
+}
