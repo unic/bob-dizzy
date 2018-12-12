@@ -43,7 +43,7 @@ function Install-ScNugetPackage {
             $repoContext = GetRepoContext $config
             $version = $repoContext.version
 
-            $releasePattern = "release????"
+            $releasePattern = "release*"
 
             $pattern =  & {
                 $branch = $repoContext.branch -replace "refs/heads/", ""
@@ -55,7 +55,7 @@ function Install-ScNugetPackage {
                         "$version-$releasePattern"
                     }
                     default {
-                        "$version-develop????"
+                        "$version-develop*"
                     }
                 }
             }
