@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.0.1
+
+* Version matching pattern updated to use wildcard for suffix
+
 ## 4.0
 
 * Initial release on GH
