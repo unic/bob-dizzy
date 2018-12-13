@@ -6,7 +6,7 @@ environment:
   NuGet_PackageId: Unic.Bob.Dizzy
   Nuspec_File: .\%NuGet_PackageId%.nuspec
   NuGetToken:
-    secure: jhODVb/iVko3b4Y9p1tOMP9LeDy6OQEYePDIDT6lfAOgNnJixjJpJBAJj/gtkDLc
+    secure: yKThXY8zy/XKWfEOZ8KZzBpTmwTmR26VIOJuiqgYR9klqhqISmn+SjCxMkVXMKrZ
   Artefact_Output_Dir: .\output
   GithubEmail: team-unic@unic.com
   GithubUsername: team-unic
@@ -32,7 +32,7 @@ assembly_info:
 build_script:
   - cmd: nuget pack %Nuspec_File% -version "%GitVersion_NuGetVersionV2%" -OutputDirectory %Artefact_Output_Dir%
   - ps: |
-      $ErrorActionPreference = 'Stop';
+      $ErrorActionPreference = 'Continue';
       .\generateDocs.ps1
   - 7z a -r %Artefact_Output_Dir%\docs.zip %APPVEYOR_BUILD_FOLDER%\docs-generated\_book
 
