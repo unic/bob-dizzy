@@ -37,7 +37,7 @@ function Install-ScNugetPackage {
     )
 
     process {
-         function GetPackageVersion {
+        function GetPackageVersion {
             param($packageId, $source, $config)
 
             $repoContext = GetRepoContext $config
@@ -45,7 +45,7 @@ function Install-ScNugetPackage {
 
             $releasePattern = "release*"
 
-            $pattern =  & {
+            $pattern = & {
                 $branch = $repoContext.branch -replace "refs/heads/", ""
                 switch -wildcard ($branch) {
                     "release/*" {
@@ -60,7 +60,7 @@ function Install-ScNugetPackage {
                 }
             }
             
-            return $pattern,  "*-$releasePattern"
+            return $pattern, "*-$releasePattern"
         }
 
 
@@ -68,18 +68,18 @@ function Install-ScNugetPackage {
             param($config)
             $website = Resolve-Path $config.WebsitePath
             $repoDir = GetDirecectoryContainingSubdir $website ".git"
-            if(-not $repoDir) {
+            if (-not $repoDir) {
                 Write-Error "$website does not contain a git repository."
             }
 
             $repo = New-Object LibGit2Sharp.Repository $repoDir
 
             $branch = $repo.Head.FriendlyName
-            if($branch -eq "(no branch)") {
+            if ($branch -eq "(no branch)") {
                 Write-Error "HEAD is detached. Please ensure you are on a valid branch or provide the 'Branch' parameter."
             }
 
-            [GitVersion.Logger]::SetLoggers({}, {}, {})
+            [GitVersion.Logger]::SetLoggers( { }, { }, { })
 
             $gitVersionConfig = New-Object GitVersion.Config
             [GitVersion.ConfigurationProvider]::ApplyDefaultsTo($gitVersionConfig)
@@ -91,21 +91,22 @@ function Install-ScNugetPackage {
             Write-Verbose "        Version of repository:  $Version"
 
             return @{
-                "branch" = $branch
+                "branch"  = $branch
                 "version" = $version
             }
 
         }
 
-        function GetNugetPackage {
+        function GetNugetPackageVersion {
             param($packageId, $versionPatterns, $source)
 
-            $packages = Get-NugetPackage -PackageId $packageId -ProjectPath $ProjectPath -Source $source
+            $nuget = ResolvePath -PackageId "NuGet.CommandLine" -RelativePath "tools\NuGet.exe"
+            $packages = & $nuget list $packageId -Source $source -AllVersions -PreRelease | Where-Object { $_ -Like "$packageId*" }
 
-            foreach($pattern in $versionPatterns) {
-                $possiblePackage =  $packages | where {$_.Version -like $pattern} |  select -Last 1
-                if($possiblePackage) {
-                    return $possiblePackage
+            foreach ($pattern in $versionPatterns) {
+                $possiblePackage = $packages | Where-Object { $_ -like "* $pattern" } | Select-Object -Last 1
+                if ($possiblePackage) {
+                    return ($possiblePackage -Split ' ')[1]
                 }            
             }
         }
@@ -114,52 +115,54 @@ function Install-ScNugetPackage {
         
         Invoke-BobCommand {
 
-        $config = Get-ScProjectConfig $ProjectPath
+            $config = Get-ScProjectConfig $ProjectPath
 
-        if(-not $OutputDirectory) {
-            $OutputDirectory = $config.WebRoot
-        }
+            $config
 
-        if($NugetPackage) {
-            $NugetPackage = $NugetPackage | % {$_.ToLower()}
-        } 
-
-        $packages = $config.NugetPackages
-        foreach($package in $packages) {
-
-            Write-Verbose "============"
-            if($NugetPackage -and -not $NugetPackage.Contains($package.ID.ToLower())) {
-                # If the NugetPackage was specified, we only want to install the specified packages.
-                Write-Verbose "Skip $($package.ID)"  
-                continue;
+            if (-not $OutputDirectory) {
+                $OutputDirectory = $config.WebRoot
             }
-            Write-Verbose "Start instalation of $($package.ID)"
 
-            $versionPatterns = $package.Version
-            if(-not $versionPatterns) {
-                Write-Verbose "    No version is specified for $($package.ID). Calculate version pattern according to current context:"
-                $versionPatterns = GetPackageVersion $package.ID $config.NuGetFeed $config
-            }
+            if ($NugetPackage) {
+                $NugetPackage = $NugetPackage | % { $_.ToLower() }
+            } 
+
+            $packages = $config.NugetPackages
+            foreach ($package in $packages) {
+
+                Write-Verbose "============"
+                if ($NugetPackage -and -not $NugetPackage.Contains($package.ID.ToLower())) {
+                    # If the NugetPackage was specified, we only want to install the specified packages.
+                    Write-Verbose "Skip $($package.ID)"  
+                    continue;
+                }
+                Write-Verbose "Start instalation of $($package.ID)"
+
+                $versionPatterns = $package.Version
+                if (-not $versionPatterns) {
+                    Write-Verbose "    No version is specified for $($package.ID). Calculate version pattern according to current context:"
+                    $versionPatterns = GetPackageVersion $package.ID $config.NuGetFeed $config
+                }
             
-            Write-Verbose "    Get newest package of $($package.ID) with version pattern $([string]::Join(", ", $versionPatterns))"
+                Write-Verbose "    Get newest package of $($package.ID) with version pattern $([string]::Join(", ", $versionPatterns))"
 
-            $nugetPackageToInstall = GetNugetPackage $package.ID $versionPatterns $config.NuGetFeed
-            if(-not $nugetPackageToInstall) {
-                Write-Error "No package was found with ID $($package.ID) and version pattern $($versionPatterns) on the NuGet feed $($config.NuGetFeed)"
-            }
-            Write-Verbose "    Found version $($nugetPackageToInstall.Version) of package $($package.ID)"
+                $packageVersionToInstall = GetNugetPackageVersion $package.ID $versionPatterns $config.NuGetFeed
+                if (-not $packageVersionToInstall) {
+                    Write-Error "No package was found with ID $($package.ID) and version pattern $($versionPatterns) on the NuGet feed $($config.NuGetFeed)"
+                }
+                Write-Verbose "    Found version $($packageVersionToInstall) of package $($package.ID)"
 
-            if($package.Target) {
-                $location = Join-Path $OutputDirectory $package.Target
-            }
-            else {
-                $location = $OutputDirectory
-            }
+                if ($package.Target) {
+                    $location = Join-Path $OutputDirectory $package.Target
+                }
+                else {
+                    $location = $OutputDirectory
+                }
 
-            Write-Verbose "    Start installation of package $($package.ID) $($nugetPackageToInstall.Version) to $location"
-            Install-NugetPackage -Package $nugetPackageToInstall -OutputLocation $Location
-            Write-Verbose "    Installed version $($package.ID) $($nugetPackageToInstall.Version) to $location"
-        }
+                Write-Verbose "    Start installation of package $($package.ID) $($packageVersionToInstall.Version) to $location"
+                Install-NugetPackage -PackageId $package.ID -Version $packageVersionToInstall -OutputLocation $Location
+                Write-Verbose "    Installed version $($package.ID) $($packageVersionToInstall.Version) to $location"
+            }
         }
     }
        
