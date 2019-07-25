@@ -46,10 +46,16 @@ test_script:
 deploy_script:
   - ps: |
       $ErrorActionPreference = 'Stop';
-      if($env:appveyor_repo_branch -eq 'master' -Or $env:appveyor_repo_tag -eq 'true') {
-        nuget push "$($env:Artefact_Output_Dir)\$($env:NuGet_PackageId).$($env:GitVersion_NuGetVersionV2).nupkg" -ApiKey $($env:NuGetToken) -Source https://www.nuget.org/api/v2/package
-      }
       if($env:appveyor_repo_tag -eq 'true') {
         Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:GithubAccessTokenTeamUnic):x-oauth-basic@github.com`n";
         .\pushDocs.ps1 $env:APPVEYOR_BUILD_FOLDER docs-generated\_book https://github.com/unic/$($env:RepoName).git
       }
+deploy:
+  - provider: Environment
+    name: NuGet.org
+    on:
+      branch: master
+  - provider: Environment
+    name: NuGet.org
+    on:
+      appveyor_repo_tag: true
