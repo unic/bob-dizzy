@@ -160,7 +160,7 @@ function Install-ScNugetPackage {
                 }
 
                 Write-Verbose "    Start installation of package $($package.ID) $($packageVersionToInstall.Version) to $location"
-                Install-NugetPackage -PackageId $package.ID -Version $packageVersionToInstall -OutputLocation $Location
+                Install-NugetPackage -PackageId $package.ID -Version $packageVersionToInstall -Source $config.NuGetFeed -OutputLocation $Location
                 Write-Verbose "    Installed version $($package.ID) $($packageVersionToInstall.Version) to $location"
             }
         }
