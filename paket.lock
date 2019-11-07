@@ -6,7 +6,7 @@ NUGET
       LibGit2Sharp.NativeBinaries (1.0.163)
     LibGit2Sharp.NativeBinaries (1.0.163)
     Microsoft.Web.Xdt (2.1.1)
-    NuGet.CommandLine (2.12)
+    NuGet.CommandLine (5.3.1)
     NuGet.Core (2.14)
       Microsoft.Web.Xdt (>= 2.1)
     Pester (4.0.8)
