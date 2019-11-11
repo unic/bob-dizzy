@@ -56,7 +56,7 @@ function Write-FrontendPackage
     $nuspec = "${env:TEMP}\Frontend.nuspec"
     $template | Out-File $nuspec -Encoding UTF8
 
-    & $nuget pack $nuspec -p "ID=$Id" -version $Version -BasePath $Path -o $OutputLocation
+    & $nuget pack $nuspec -p "ID=$Id" -version $Version -BasePath $Path -OutputDirectory $OutputLocation
     if($LASTEXITCODE -ne 0) {
         Write-Error "NuGet package generation failed"
     }
