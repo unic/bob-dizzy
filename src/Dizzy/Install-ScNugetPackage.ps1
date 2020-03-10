@@ -104,10 +104,15 @@ function Install-ScNugetPackage {
             $packages = & $nuget list $packageId -Source $source -AllVersions -PreRelease | Where-Object { $_ -Like "$packageId*" }
 
             foreach ($pattern in $versionPatterns) {
-                $possiblePackage = $packages | Where-Object { $_ -like "* $pattern" } | Select-Object -Last 1
-                if ($possiblePackage) {
-                    return ($possiblePackage -Split ' ')[1]
-                }            
+                $possiblePackages = $packages | Where-Object { $_ -like "* $pattern" } 
+                if ($possiblePackages.Count -eq 1) {
+                    return $possiblePackages.Split(" ")[1]
+                }
+            
+                $newestVersion = $possiblePackages | ForEach-Object { [NuGet.Versioning.SemanticVersion]::Parse($_.Split(" ")[1]) } | Sort-Object | Select-Object -Last 1 | ForEach-Object { $_.ToString() }
+                if ($newestVersion) {
+                    return $newestVersion
+                }                        
             }
         }
 
